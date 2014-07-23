@@ -1,0 +1,4 @@
+Created in Atom
+Running behind node.js (express + thunder)
+Database running MongoDB (Mongoose in Node)
+Fork me on the githubs https://github.com/yukimono/xivbeat

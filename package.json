@@ -1,0 +1,27 @@
+{
+  "name": "xivbeat",
+  "version": "0.0.0",
+  "description": "Final Fantasy XIV: A Realm Reborn status website (and API)",
+  "main": "index.js",
+  "scripts": {
+    "test": "return 0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "github.com/yukimono/xivbeat"
+  },
+  "author": "Yukimono",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yukimono/xivbeat/issues"
+  },
+  "homepage": "https://github.com/yukimono/xivbeat",
+  "dependencies": {
+    "express": "^4.6.1",
+    "express-thunder": "^1.1.6",
+    "mongoose": "^3.8.13",
+    "request": "^2.38.0",
+    "serve-static": "^1.4.0",
+    "thunder": "^0.2.0"
+  }
+}
