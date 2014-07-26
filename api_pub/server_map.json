@@ -1,0 +1,119 @@
+{
+  "Lobby": {
+    "Japan": "124.150.157.158",
+    "North America": "199.91.189.74"
+  },
+  "Elemental": {
+    "Aegis": "124.150.157.24",
+    "Atomos": "124.150.157.33",
+    "Carbuncle": "124.150.157.33",
+    "Garuda": "124.150.157.25",
+    "Gungnir": "124.150.157.39",
+    "Kujata": "124.150.157.31",
+    "Ramuh": "124.150.157.30",
+    "Tonberry": "124.150.157.30",
+    "Typhon": "124.150.157.33",
+    "Unicorn": "124.150.157.32"
+  },
+  "Gaia": {
+    "Alexander": "124.150.157.47",
+    "Bahamut": "124.150.157.45",
+    "Durandal": "124.150.157.50",
+    "Fenrir": "124.150.157.47",
+    "Ifrit": "124.150.157.46",
+    "Ridill": "124.150.157.43",
+    "Tiamat": "124.150.157.52",
+    "Ultima": "124.150.157.47",
+    "Valefor": "124.150.157.47",
+    "Yojimbo": "124.150.157.25",
+    "Zeromus": "124.150.157.43"
+  },
+  "Mana": {
+    "Anima": "124.150.157.28",
+    "Asura": "124.150.157.29",
+    "Belias": "124.150.157.54",
+    "Chocobo": "124.150.157.29",
+    "Hades": "124.150.157.29",
+    "Ixion": "124.150.157.57",
+    "Mandragora": "124.150.157.54",
+    "Masamune": "124.150.157.29",
+    "Pandaemonium": "124.150.157.58",
+    "Shinryu": "124.150.157.49",
+    "Titan": "124.150.157.51"
+  },
+  "Aether": {
+    "Adamantoise": "199.91.189.30",
+    "Balmung": "199.91.189.30",
+    "Cactuar": "199.91.189.23",
+    "Coeurl": "199.91.189.27",
+    "Faerie": "199.91.189.30",
+    "Gilgamesh": "199.91.189.57",
+    "Goblin": "199.91.189.26",
+    "Jenova": "199.91.189.27",
+    "Mateus": "199.91.189.22",
+    "Midgardsormr": "199.91.189.28",
+    "Sargatanas": "199.91.189.33",
+    "Siren": "199.91.189.29",
+    "Zalera": "199.91.189.57"
+  },
+  "Primal": {
+    "Behemoth": "199.91.189.40",
+    "Brynhildr": "199.91.189.46",
+    "Diabolos": "199.91.189.38",
+    "Excalibur": "199.91.189.38",
+    "Exodus": "199.91.189.57",
+    "Famfrit": "199.91.189.39",
+    "Hyperion": "199.91.189.57",
+    "Lamia": "199.91.189.40",
+    "Leviathan": "199.91.189.42",
+    "Malboro": "199.91.189.24",
+    "Ultros": "199.91.189.36"
+  },
+  "Chaos": {
+    "Cerberus": "199.91.189.26",
+    "Lich": "199.91.189.42",
+    "Moogle": "199.91.189.60",
+    "Odin": "199.91.189.30",
+    "Phoenix": "199.91.189.22",
+    "Ragnarok": "199.91.189.60",
+    "Shiva": "199.91.189.45",
+    "Zodiark": "199.91.189.54"
+  },
+  "metadata": {
+    "datacenters": {
+      "Elemental": {
+        "Region": "Japan"
+      },
+      "Gaia": {
+        "Region": "Japan"
+      },
+      "Mana": {
+        "Region": "Japan"
+      },
+      "Aether": {
+        "Region": "North America"
+      },
+      "Primal": {
+        "Region": "North America"
+      },
+      "Chaos": {
+        "Region": "Europe"
+      }
+    },
+    "order": [
+      "Lobby",
+      "Elemental",
+      "Gaia",
+      "Mana",
+      "Aether",
+      "Primal",
+      "Chaos"
+    ],
+    "state": [
+      "Offline",
+      "Online",
+      "Partial Maintenance",
+      "Maintenance"
+    ]
+  }
+}
