@@ -104,6 +104,7 @@
       }
     },
     "order": [
+      "Login",
       "Lobby",
       "Elemental",
       "Gaia",
