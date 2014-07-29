@@ -5,6 +5,7 @@ var jmap = require("../lib/jsonmap.js");
 
 var schema = {
   "Time": null,
+  "Global": null,
   "Japan": null,
   "North America": null,
   "Aegis": null,
