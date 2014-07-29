@@ -1,0 +1,115 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans);
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #eee;
+  color: #222;
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.container {
+  width: 930px;
+  margin: 0 auto;
+}
+
+.container > header {
+  padding: 15px;
+  margin-bottom: 15px;
+  background: #222;
+  color: #eee;
+}
+
+.container > header p {
+  padding: 50px;
+  font-size: 40px;
+}
+
+.container > header p small {
+  clear: both;
+  display: block;
+  font-size: 0.6em;
+  padding-left: 55px;
+}
+
+span.xiv, span.xiv span {
+  display: inline-block;
+  letter-spacing: -9px;
+}
+
+span.xiv span {
+  vertical-align: 5px;
+}
+
+article {
+  width: 300px;
+  clear: none;
+  display: inline-block;
+  margin-right: 11px;
+  margin-bottom: 10px;
+  font-size: 24px;
+  vertical-align: top;
+  float: left;
+}
+
+article:nth-child(3n) {
+  margin-right: 0;
+}
+
+
+article header {
+  background: #222;
+  color: #eee;
+  padding: 5px;
+}
+
+article figure {
+  font-size: 0.8em;
+  padding: 5px;
+  display: block;
+  position: relative;
+}
+
+article figure span:before {
+  display: block;
+  position: absolute;
+  right: 9px;
+  top: 9px;
+  text-transform: uppercase;
+  font-size: 12px;
+}
+
+article figure.offline {
+  background: red;
+}
+
+article figure.offline span:before {
+  content: "Offline"
+}
+
+article figure.partial {
+  background: yellow;
+}
+
+article figure.partial span:before {
+  content: "Partial"
+}
+
+article figure.maintenance {
+  background: orange;
+}
+
+article figure.maintenance span:before {
+  content: "Maintenance"
+}
+
+article figure.online {
+  background: green;
+}
+
+article figure.online span:before {
+  content: "Online"
+}
