@@ -12,7 +12,9 @@ body {
 }
 
 .container {
-  width: 930px;
+  max-width: 930px;
+  padding: 15px;
+  padding-top: 0;
   margin: 0 auto;
 }
 
@@ -44,21 +46,22 @@ span.xiv span {
   vertical-align: 5px;
 }
 
-article {
-  width: 300px;
-  clear: none;
-  display: inline-block;
-  margin-right: 11px;
-  margin-bottom: 10px;
+.status {
   font-size: 24px;
-  vertical-align: top;
-  float: left;
+  width: 100%;
+  -moz-column-count: 3;
+  -webkit-column-count: 3;
+  column-count: 3;
+  -moz-column-gap: 15px;
+  -webkit-column-gap: 15px;
+  column-gap: 15px;
 }
 
-article:nth-child(3n) {
-  margin-right: 0;
+article {
+  display: inline-block;
+  margin: 0 0 15px;
+  width: 100%;
 }
-
 
 article header {
   background: #222;
@@ -71,6 +74,7 @@ article figure {
   padding: 5px;
   display: block;
   position: relative;
+  cursor: pointer;
 }
 
 article figure span:before {
@@ -83,7 +87,11 @@ article figure span:before {
 }
 
 article figure.offline {
-  background: red;
+  background: #777777;
+}
+
+article figure.offline:hover {
+  background: #555555;
 }
 
 article figure.offline span:before {
@@ -91,7 +99,11 @@ article figure.offline span:before {
 }
 
 article figure.partial {
-  background: yellow;
+  background: #f0ad4e;
+}
+
+article figure.partial:hover {
+  background: #ec971f;
 }
 
 article figure.partial span:before {
@@ -99,7 +111,11 @@ article figure.partial span:before {
 }
 
 article figure.maintenance {
-  background: orange;
+  background: #d9534f;
+}
+
+article figure.maintenance:hover {
+  background: #c9302c;
 }
 
 article figure.maintenance span:before {
@@ -107,9 +123,40 @@ article figure.maintenance span:before {
 }
 
 article figure.online {
-  background: green;
+  background: #5cb85c;
+}
+
+article figure.online:hover {
+  background: #449d44;
 }
 
 article figure.online span:before {
   content: "Online"
+}
+
+article a {
+  color: #222;
+  text-decoration: none;
+}
+
+@media all and (max-width: 600px) {
+  .container > header p {
+    padding: 0;
+  }
+
+  .status {
+    -moz-column-count: 1;
+    -webkit-column-count: 1;
+    column-count: 1;
+  }
+}
+
+@media all and (max-width: 400px) {
+  .container > header p {
+    text-align: center
+  }
+
+  .container > header p small {
+    padding: 0;
+  }
 }
