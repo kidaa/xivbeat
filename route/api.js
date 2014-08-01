@@ -83,7 +83,7 @@ var API = function(db) {
             },
             article: {
               url: req.protocol + "://" + req.get("host") + prefix + "article.json",
-              params: ["id", "lang"],
+              params: ["id"],
               expires: 1000 * 15 * 1
             }
           })
@@ -206,12 +206,12 @@ var API = function(db) {
             return res.end({error: "Invalid ID"});
           }
 
-          var ch = cache.get("article.json#" + req.query.id + "#" + (req.query.lang || "en-us"));
+          var ch = cache.get("article.json#" + req.query.id);
           if(ch !== null) {
             return res.end(ch);
           }
 
-          return frontier.getArticle(req.query.lang || "en-us", req.query.id || "", function(err, article) {
+          return frontier.getArticle(req.query.id || "", function(err, article) {
             if(err) {
               return res.end({error: err});
             }
@@ -220,7 +220,7 @@ var API = function(db) {
               return res.end({error: "Invalid ID"});
             }
 
-            cache.set("article.json#" + req.query.id, article + "#" + (req.query.lang || "en-us"));
+            cache.set("article.json#" + req.query.id, article);
             return res.end(article);
           });
         break;
