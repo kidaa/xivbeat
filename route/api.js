@@ -41,11 +41,11 @@ var API = function(db) {
               params: [],
               expires: 0
             },
-            list_slim, {
+            list_slim: {
               url: req.protocol + "://" + req.get("host") + prefix + "server_map_linear.json",
               params: [],
               expires: 0
-            }
+            },
             server: {
               url: req.protocol + "://" + req.get("host") + prefix + "server.json",
               params: [],
@@ -65,24 +65,24 @@ var API = function(db) {
               url: req.protocol + "://" + req.get("host") + prefix + "world.json",
               params: [],
               expires: 1000 * 60 * 1
-            }
+            },
             login: {
               url: req.protocol + "://" + req.get("host") + prefix + "login.json",
               params: [],
               expires: 1000 * 15 * 1
-            }
+            },
             lobby: {
               url: req.protocol + "://" + req.get("host") + prefix + "lobby.json",
               params: ["lang"],
               expires: 1000 * 15 * 1
-            }
+            },
             headlines: {
               url: req.protocol + "://" + req.get("host") + prefix + "headlines.json",
               params: ["lang"],
               expires: 1000 * 15 * 1
-            }
+            },
             article: {
-              req.protocol + "://" + req.get("host") + prefix + "article.json",
+              url: req.protocol + "://" + req.get("host") + prefix + "article.json",
               params: ["id", "lang"],
               expires: 1000 * 15 * 1
             }
@@ -154,7 +154,7 @@ var API = function(db) {
         break;
 
         case prefix + "world.json":
-          var ch = cache.get("world.json");
+          var ch = cache.get("world.json", 1000 * 60 * 1);
           if(ch !== null) {
             return res.end(ch);
           }
@@ -217,7 +217,7 @@ var API = function(db) {
             }
 
             if(Object.keys(article).length == 0) {
-              return res.end({error: "Invalid ID"})l
+              return res.end({error: "Invalid ID"});
             }
 
             cache.set("article.json#" + req.query.id, article + "#" + (req.query.lang || "en-us"));
