@@ -13,6 +13,7 @@ app.use(static("./pub"));
 
 var db = null;
 
+app.use(require("./route/api")(db));
 require("./route/index.js")(app, db);
 
 app.listen(process.env.VMC_PORT || process.env.PORT || 8080);
