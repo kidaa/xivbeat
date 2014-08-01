@@ -31,15 +31,61 @@ var API = function(db) {
       switch(req.path) {
         case prefix:
           return res.end({
-            list: req.protocol + "://" + req.get("host") + prefix + "server_map.json",
-            list_linear: req.protocol + "://" + req.get("host") + prefix + "server_map_linear.json",
-            server: req.protocol + "://" + req.get("host") + prefix + "server.json",
-            timeseries: req.protocol + "://" + req.get("host") + prefix + "timeseries.json",
-            world: req.protocol + "://" + req.get("host") + prefix + "world.json",
-            login: req.protocol + "://" + req.get("host") + prefix + "login.json",
-            lobby: req.protocol + "://" + req.get("host") + prefix + "lobby.json",
-            headlines: req.protocol + "://" + req.get("host") + prefix + "headlines.json",
-            article: req.protocol + "://" + req.get("host") + prefix + "article.json",
+            root: {
+              url: req.protocol + "://" + req.get("host") + prefix,
+              params: [],
+              expires: 0
+            },
+            list: {
+              url: req.protocol + "://" + req.get("host") + prefix + "server_map.json",
+              params: [],
+              expires: 0
+            },
+            list_slim, {
+              url: req.protocol + "://" + req.get("host") + prefix + "server_map_linear.json",
+              params: [],
+              expires: 0
+            }
+            server: {
+              url: req.protocol + "://" + req.get("host") + prefix + "server.json",
+              params: [],
+              expires: 1000 * 60 * 1
+            },
+            server_slim: {
+              url: req.protocol + "://" + req.get("host") + prefix + "slim.json",
+              params: [],
+              expires: 1000 * 15
+            },
+            timeseries: {
+              url: req.protocol + "://" + req.get("host") + prefix + "timeseries.json",
+              params: [],
+              expires: -1
+            },
+            world: {
+              url: req.protocol + "://" + req.get("host") + prefix + "world.json",
+              params: [],
+              expires: 1000 * 60 * 1
+            }
+            login: {
+              url: req.protocol + "://" + req.get("host") + prefix + "login.json",
+              params: [],
+              expires: 1000 * 15 * 1
+            }
+            lobby: {
+              url: req.protocol + "://" + req.get("host") + prefix + "lobby.json",
+              params: ["lang"],
+              expires: 1000 * 15 * 1
+            }
+            headlines: {
+              url: req.protocol + "://" + req.get("host") + prefix + "headlines.json",
+              params: ["lang"],
+              expires: 1000 * 15 * 1
+            }
+            article: {
+              req.protocol + "://" + req.get("host") + prefix + "article.json",
+              params: ["id", "lang"],
+              expires: 1000 * 15 * 1
+            }
           })
         break;
 
@@ -52,17 +98,17 @@ var API = function(db) {
         break;
 
         case prefix + "headlines.json":
-          var ch = cache.get("headlines.json");
+          var ch = cache.get("headlines.json#" + (req.query.lang || "en-us"));
           if(ch !== null) {
             return res.end(ch);
           }
 
-          return frontier.getHeadlines(function(err, headlines) {
+          return frontier.getHeadlines(req.query.lang || "en-us", function(err, headlines) {
             if(err) {
               return res.end({error: err});
             }
 
-            cache.set("headlines.json", headlines);
+            cache.set("headlines.json#" + (req.query.lang || "en-us"), headlines);
             return res.end(headlines);
           });
         break;
@@ -77,7 +123,22 @@ var API = function(db) {
             if(err) {
               return res.end({error: err});
             }
-            cache.set("status.json", status);
+            cache.set("status.json", status, 1000 * 60 * 1);
+            return res.end(status);
+          });
+        break;
+
+        case prefix + "slim.json":
+          var ch = cache.get("slim.json");
+          if(ch !== null) {
+            return res.end(ch);
+          }
+
+          return frontier.getStatusSlim(function(err, status) {
+            if(err) {
+              return res.end({error: err});
+            }
+            cache.set("slim.json", status);
             return res.end(status);
           });
         break;
@@ -125,17 +186,17 @@ var API = function(db) {
         break;
 
         case prefix + "lobby.json":
-          var ch = cache.get("lobby.json");
+          var ch = cache.get("lobby.json#" + (req.query.lang || "en-us"));
           if(ch !== null) {
             return res.end(ch);
           }
 
-          return frontier.getLobbyStatus(function(err, lobby) {
+          return frontier.getLobbyStatus(req.query.lang || "en-us", function(err, lobby) {
             if(err) {
               return res.end({error: err});
             }
 
-            cache.set("lobby.json", lobby);
+            cache.set("lobby.json#" + (req.query.lang || "en-us"), lobby);
             return res.end(lobby);
           });
         break;
@@ -145,17 +206,21 @@ var API = function(db) {
             return res.end({error: "Invalid ID"});
           }
 
-          var ch = cache.get("article.json#" + req.query.id);
+          var ch = cache.get("article.json#" + req.query.id + "#" + (req.query.lang || "en-us"));
           if(ch !== null) {
             return res.end(ch);
           }
 
-          return frontier.getArticle(req.query.id || "", function(err, article) {
+          return frontier.getArticle(req.query.lang || "en-us", req.query.id || "", function(err, article) {
             if(err) {
               return res.end({error: err});
             }
 
-            cache.set("article.json#" + req.query.id, article);
+            if(Object.keys(article).length == 0) {
+              return res.end({error: "Invalid ID"})l
+            }
+
+            cache.set("article.json#" + req.query.id, article + "#" + (req.query.lang || "en-us"));
             return res.end(article);
           });
         break;
