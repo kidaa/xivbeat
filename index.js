@@ -10,7 +10,7 @@ app.engine("html", thunder);
 app.set("view engine", "html");
 app.set("views", "./view");
 app.set("domain", process.env.OPENSHIFT_NODEJS_IP || "0.0.0.0");
-app.set("port", process.env.OPENSHIFT_NODE_PORT || process.env.PORT || 8080);
+app.set("port", process.env.OPENSHIFT_NODEJS_PORT || process.env.PORT || 8080);
 
 var db = null;
 
