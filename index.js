@@ -6,14 +6,15 @@ var express = require("express"),
     thunder = require("express-thunder"),
     app = express();
 
-app.engine("thunder", thunder);
-app.set("view engine", "thunder");
+app.engine("html", thunder);
+app.set("view engine", "html");
 app.set("views", "./view");
-app.use(static("./pub"));
 
 var db = null;
 
 app.use(require("./route/api")(db));
+app.use(static("./pub"));
+
 require("./route/index.js")(app, db);
 
 app.listen(process.env.VMC_PORT || process.env.PORT || 8080);
