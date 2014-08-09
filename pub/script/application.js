@@ -10,7 +10,7 @@ var GET = function(url, callback) {
   xhr.send();
 };
 
-var ROOT = "/api/";
+var ROOT = "api." + location.host;
 
 var metadata = map = null;
 
