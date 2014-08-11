@@ -13,7 +13,10 @@ var GET = function(url, callback) {
   xhr.send();
 };
 
-var ROOT = "http://api." + location.host + "/";
+var domain = location.host.split(".").splice(-2)[0],
+    tld = location.host.split(".").splice(-1)[0];
+
+var ROOT = "http://api." + domain + "." + tld + "/";
 
 var metadata = map = null;
 
