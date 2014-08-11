@@ -100,7 +100,7 @@ article figure {
   cursor: pointer;
 }
 
-article figure span {
+article figure span:first-child, article figure span:nth-child(2) {
   display: none;
 }
 
@@ -109,7 +109,7 @@ article figure.name span:first-child, article figure.ip span:nth-child(2) {
 }
 
 article figure span:last-child:before {
-  display: block;
+  display: block !important;
   position: absolute;
   right: 9px;
   top: 9px;
@@ -170,6 +170,10 @@ article a {
   text-decoration: none;
 }
 
+#hideif {
+  color: #aaa !important;
+}
+
 @media all and (max-width: 600px) {
   .container > header p {
     padding: 0;
@@ -179,6 +183,10 @@ article a {
     -moz-column-count: 1;
     -webkit-column-count: 1;
     column-count: 1;
+  }
+
+  #hideif {
+    display: none;
   }
 }
 

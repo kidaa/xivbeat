@@ -15,10 +15,10 @@ var API = function(app, db, subdomain, router) {
         return;
       }
 
-      cache.set("status.json", status, Number.MAX_VALUE);
-      cache.set("world.json", world, Number.MAX_VALUE);
-      cache.set("login.json", login, Number.MAX_VALUE);
-      cache.set("lobby.json", lobby, Number.MAX_VALUE);
+      cache.set("status.json", status);
+      cache.set("world.json", world);
+      cache.set("login.json", login);
+      cache.set("lobby.json", lobby);
     });
   }, fetchServerSlim = function() {
     frontier.getStatusSlim(function(err, status) {
@@ -27,7 +27,7 @@ var API = function(app, db, subdomain, router) {
         return;
       }
 
-      cache.set("slim.json", status, Number.MAX_VALUE);
+      cache.set("slim.json", status);
     });
   };
 
@@ -35,10 +35,14 @@ var API = function(app, db, subdomain, router) {
   fetchServerSlim();
 
   router.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    res.header("Access-Control-Allow-Origin", "*");
+
     res._end = res.end;
     res.end = function(msg) {
       if(typeof msg == "object" && !Buffer.isBuffer(msg)) {
         msg = JSON.stringify(msg);
+        res.header("Content-Type", "application/json");
       }
 
       res._end(msg);
@@ -51,57 +55,57 @@ var API = function(app, db, subdomain, router) {
   router.get("/", function(req, res) {
     return res.end({
       root: {
-        url: req.protocol + "://" + req.get("host") + prefix,
+        url: req.protocol + "://" + req.get("host"),
         params: [],
         expires: 0
       },
       list: {
-        url: req.protocol + "://" + req.get("host") + prefix + "server_map.json",
+        url: req.protocol + "://" + req.get("host") + "/server_map.json",
         params: [],
         expires: 0
       },
       list_slim: {
-        url: req.protocol + "://" + req.get("host") + prefix + "server_map_linear.json",
+        url: req.protocol + "://" + req.get("host") + "/server_map_linear.json",
         params: [],
         expires: 0
       },
       server: {
-        url: req.protocol + "://" + req.get("host") + prefix + "server.json",
+        url: req.protocol + "://" + req.get("host") + "/server.json",
         params: [],
         expires: 1000 * 60
       },
       server_slim: {
-        url: req.protocol + "://" + req.get("host") + prefix + "slim.json",
+        url: req.protocol + "://" + req.get("host") + "/slim.json",
         params: [],
         expires: 1000 * 15
       },
       timeseries: {
-        url: req.protocol + "://" + req.get("host") + prefix + "timeseries.json",
+        url: req.protocol + "://" + req.get("host") + "/timeseries.json",
         params: ["world", "start", "end"],
         expires: Number.MAX_VALUE
       },
       world: {
-        url: req.protocol + "://" + req.get("host") + prefix + "world.json",
+        url: req.protocol + "://" + req.get("host") + "/world.json",
         params: [],
         expires: 1000 * 60
       },
       login: {
-        url: req.protocol + "://" + req.get("host") + prefix + "login.json",
+        url: req.protocol + "://" + req.get("host") + "/login.json",
         params: [],
         expires: 1000 * 60
       },
       lobby: {
-        url: req.protocol + "://" + req.get("host") + prefix + "lobby.json",
+        url: req.protocol + "://" + req.get("host") + "/lobby.json",
         params: ["lang"],
         expires: 1000 * 60
       },
       headlines: {
-        url: req.protocol + "://" + req.get("host") + prefix + "headlines.json",
+        url: req.protocol + "://" + req.get("host") + "/headlines.json",
         params: ["lang"],
         expires: 1000 * 60 * 60
       },
       article: {
-        url: req.protocol + "://" + req.get("host") + prefix + "article.json",
+        url: req.protocol + "://" + req.get("host") + "/article.json",
         params: ["id"],
         expires: 1000 * 60 * 60
       }
@@ -126,12 +130,12 @@ var API = function(app, db, subdomain, router) {
 
   router.get("/server.json", function(req, res) {
     var ch = cache.get("status.json");
-    res.end(ch || {});
+    res.end(ch || {error: "no cached data"});
   });
 
   router.get("/slim.json", function(req, res) {
     var ch = cache.get("slim.json");
-    res.end(ch || {});
+    res.end(ch || {error: "no cached data"});
   })
 
   router.get("/timeseries.json", function(req, res) {
@@ -146,7 +150,7 @@ var API = function(app, db, subdomain, router) {
 
   router.get("/world.json", function(req, res) {
     var ch = cache.get("world.json");
-    res.end(ch || {});
+    res.end(ch || {error: "no cached data"});
   });
 
   router.get("/login.json", function(req, res) {
@@ -178,9 +182,20 @@ var API = function(app, db, subdomain, router) {
         return res.end({error: "Invalid ID"});
       }
 
-      cache.set("article.json#" + req.query.id, article);
+      cache.set("article.json#" + req.query.id, article, 1000 * 60 * 60);
       return res.end(article);
     });
+  });
+
+  router.use(function(err, req, res, next) {
+    if(err.status === 404) {
+      next();
+    }
+    res.end({error: err.message, stack: err.stack});
+  });
+
+  router.use(function(req, res) {
+    res.end({error: "we lost the unicorns"});
   });
 
   app.use(subdomain("api", router));

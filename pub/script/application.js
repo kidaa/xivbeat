@@ -4,13 +4,16 @@ var GET = function(url, callback) {
   xhr.responseType = "json";
   xhr.onreadystatechange = function() {
     if(xhr.readyState == 4) {
+      if(xhr.status !== 200) {
+        alert("An unexpected error occurred, sorry.")
+      }
       callback(xhr.status, xhr.response);
     }
   }
   xhr.send();
 };
 
-var ROOT = "api." + location.host;
+var ROOT = "http://api." + location.host + "/";
 
 var metadata = map = null;
 
@@ -27,7 +30,7 @@ var refresh = function() {
 var check = function() {
   GET(ROOT + "slim.json", function(status, response) {
     var time = response.shift();
-    document.getElementById("timer").children[0].textContent = (new Date(time)).toUTCString();
+    document.getElementById("timer").children[0].children[0].textContent = (new Date(time)).toUTCString();
     for(var i = 0; i < response.length; ++i) {
       var world = slim[i];
       var el = document.getElementById(world);
@@ -75,6 +78,7 @@ var load =  function() {
 };
 
 GET(ROOT + "server_map.json", function(status, response) {
+  console.log(status);
   document.getElementById("names").addEventListener("click", function(event) {
     event.preventDefault();
     this.className = "selected";
