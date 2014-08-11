@@ -176,6 +176,11 @@
         }
       }
     },
+    "express-subdomain": {
+      "version": "1.0.0",
+      "from": "express-subdomain@",
+      "resolved": "https://registry.npmjs.org/express-subdomain/-/express-subdomain-1.0.0.tgz"
+    },
     "express-thunder": {
       "version": "1.1.6",
       "from": "express-thunder@",
