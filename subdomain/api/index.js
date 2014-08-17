@@ -43,7 +43,7 @@ var API = function(app, db, subdomain, root) {
 
   root.use(function(err, req, res, next) {
     if(err.status === 404) {
-      next();
+      return next();
     }
     res.end({error: err.message, stack: err.stack});
   });
