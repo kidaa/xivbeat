@@ -16,7 +16,7 @@ var GET = function(url, callback) {
 var domain = location.host.split(".").splice(-2)[0],
     tld = location.host.split(".").splice(-1)[0];
 
-var ROOT = "http://api." + domain + "." + tld + "/";
+var ROOT = "http://api." + domain + "." + tld + "/frontier/1.0/";
 
 var metadata = map = null;
 
