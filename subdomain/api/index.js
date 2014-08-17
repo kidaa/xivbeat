@@ -27,10 +27,15 @@ var API = function(app, db, subdomain, root) {
 
   root.use("/frontier/1.0", require("./entry/frontier/1.0")(app, db, Router()));
 
+  root.use("/lodestone/1.0", require("./entry/lodestone/1.0")(app, db, Router()));
+
   root.get("/", function(req, res) {
     res.end({
       frontier: {
         "1.0": req.protocol + "://" + req.get("host") + "/frontier/1.0/"
+      },
+      lodestone: {
+        "1.0": req.protocol + "://" + req.get("host") + "/lodestone/1.0/"
       }
     });
   });
@@ -38,6 +43,12 @@ var API = function(app, db, subdomain, root) {
   root.get("/frontier", function(req, res) {
     res.end({
       "1.0": req.protocol + "://" + req.get("host") + "/frontier/1.0/"
+    });
+  });
+
+  root.get("/lodestone", function(req, res) {
+    res.end({
+      "1.0": req.protocol + "://" + req.get("host") + "/lodestone/1.0/"
     });
   });
 
