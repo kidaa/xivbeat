@@ -7,7 +7,7 @@ var cache = require("../../../../lib/cache.js"),
     path = require("path"),
     static = require("serve-static");
 
-var LODESTONE_10 = function(app, db, router) {
+var FRONTIER_10 = function(app, db, router) {
   var fetchServerStatus = function() {
     frontier.getStatus(function(err, status, world, login, lobby) {
       setTimeout(fetchServerStatus, 1000 * 59);
@@ -39,7 +39,7 @@ var LODESTONE_10 = function(app, db, router) {
   router.get("/", function(req, res) {
     return res.end({
       root: {
-        url: req.protocol + "://" + req.get("host"),
+        url: req.protocol + "://" + req.get("host") + "/frontier/1.0/",
         params: [],
         expires: 0
       },
@@ -174,4 +174,4 @@ var LODESTONE_10 = function(app, db, router) {
   return router;
 }
 
-exports = module.exports = LODESTONE_10;
+exports = module.exports = FRONTIER_10;

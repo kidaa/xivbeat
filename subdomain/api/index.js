@@ -35,6 +35,12 @@ var API = function(app, db, subdomain, root) {
     });
   });
 
+  root.get("/frontier", function(req, res) {
+    res.end({
+      "1.0": req.protocol + "://" + req.get("host") + "/frontier/1.0/"
+    });
+  });
+
   root.use(function(err, req, res, next) {
     if(err.status === 404) {
       next();
