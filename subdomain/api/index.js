@@ -14,7 +14,11 @@ var API = function(app, db, subdomain, root) {
     res._end = res.end;
     res.end = function(msg) {
       if(typeof msg == "object" && !Buffer.isBuffer(msg)) {
-        msg = JSON.stringify(msg);
+        if(req.query.pretty !== undefined) {
+          msg = JSON.stringify(msg, null, 2);
+        } else {
+          msg = JSON.stringify(msg);
+        }
         res.header("Content-Type", "application/json");
       }
 

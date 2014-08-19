@@ -22,6 +22,11 @@ var LODESTONE_10 = function(app, db, router) {
         url: req.protocol + "://" + req.get("host") + "/lodestone/1.0/character/:id.json",
         params: [],
         expires: 1000 * 60 * 60 * 24
+      },
+      freeCompany: {
+        url: req.protocol + "://" + req.get("host") + "/lodestone/1.0/company/:id.json",
+        params: [],
+        expires: 1000 * 60 * 60 * 24
       }
     });
   });
@@ -40,6 +45,28 @@ var LODESTONE_10 = function(app, db, router) {
         } else {
           result.expires = Date.now() + 1000 * 60 * 60 * 24;
           cache.set("CHARACTER#"+id, result, 1000 * 60 * 60 * 24);
+          res.end(result);
+        }
+      });
+    } else {
+      res.end(ch || {});
+    }
+  });
+
+  router.get("/company/:id.json", function(req, res, next) {
+    var id = req.params.id;
+    var ch = cache.get("FC#"+id);
+    if(ch === null) {
+      lodestone.getFreeCompanyInfo(id, function(err, result) {
+        if(err != null) {
+          res.send(500);
+          return res.end({error: err});
+        } else if(err == null && result == null) {
+          res.status = 404;
+          return next();
+        } else {
+          result.expires = Date.now() + 1000 * 60 * 60 * 24;
+          cache.set("FC#"+id, result, 1000 * 60 * 60 * 24);
           res.end(result);
         }
       });
