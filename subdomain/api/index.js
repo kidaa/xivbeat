@@ -33,6 +33,8 @@ var API = function(app, db, subdomain, root) {
 
   root.use("/lodestone/1.0", require("./entry/lodestone/1.0")(app, db, Router()));
 
+  root.use("/aetheryte/1.0", require("./entry/aetheryte/1.0")(app, db, Router()));
+
   root.get("/", function(req, res) {
     res.end({
       frontier: {
@@ -40,6 +42,9 @@ var API = function(app, db, subdomain, root) {
       },
       lodestone: {
         "1.0": req.protocol + "://" + req.get("host") + "/lodestone/1.0/"
+      },
+      aetheryte: {
+        "1.0": req.protocol + "://" + req.get("host") + "/aetheryte/1.0/"
       }
     });
   });
@@ -53,6 +58,12 @@ var API = function(app, db, subdomain, root) {
   root.get("/lodestone", function(req, res) {
     res.end({
       "1.0": req.protocol + "://" + req.get("host") + "/lodestone/1.0/"
+    });
+  });
+
+  root.get("/aetheryte", function(req, res) {
+    res.end({
+      "1.0": req.protocol + "://" + req.get("host") + "/aetheryte/1.0/"
     });
   });
 
