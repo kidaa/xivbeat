@@ -59,7 +59,7 @@ var maintenance_do = function() {
   if(list.children.length == 0) {
     document.getElementById("affected").style.display = "block";
     for(var i = 0; i < maintenance_cache.services.length; ++i) {
-      var span = document.createElement("span");
+      var span = document.createElement("div");
       span.innerText = maintenance_cache.services[i];
       list.appendChild(span);
     }
