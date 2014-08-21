@@ -14,6 +14,10 @@ var API = function(app, db, subdomain, root) {
     res._end = res.end;
     res.end = function(msg) {
       if(typeof msg == "object" && !Buffer.isBuffer(msg)) {
+        if("error" in msg) {
+          res.status = 500;
+        }
+
         if(req.query.pretty !== undefined) {
           msg = JSON.stringify(msg, null, 2);
         } else {

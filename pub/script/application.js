@@ -81,7 +81,7 @@ var maintenance_do = function() {
   } else {
     document.getElementsByTagName("section")[0].style.display =
     document.getElementById("ongoing-maintenance").style.display =
-    document.getElementById("planned-maintenance").style.display = "block";
+    document.getElementById("planned-maintenance").style.display = "none";
     maintenance_cache = null;
     for(var i = 0; i < list.children.length; ++i) {
       list.removeChild(list[i]);
