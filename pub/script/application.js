@@ -44,6 +44,58 @@ var check = function() {
     document.getElementById("timer").children[1].textContent = (new Date(Date.now() + (1000 * 15 * 1))).toUTCString();
     setTimeout(check, 1000 * 15 * 1);
   });
+};
+var padZero = function(number) {
+  return ("00" + number).substr(-2);
+}
+var maintenance_cache = {};
+var maintenance_do = function() {
+  if(maintenance_cache === null) {
+    return setTimeout(maintenance, 1000 * 60 * 30);
+  }
+
+  var list = document.querySelector("#affected #list");
+
+  if(list.children.length == 0) {
+    document.getElementById("affected").style.display = "block";
+    for(var i = 0; i < maintenance_cache.services.length; ++i) {
+      var span = document.createElement("span");
+      span.innerText = maintenance_cache.services[i];
+      list.appendChild(span);
+    }
+  }
+
+  var now = Date.now();
+  var timeUntil = maintenance_cache.start - now,
+      timeLeft = maintenance_cache.end - now;
+  if(timeUntil > 0) {
+    var date = new Date(timeUntil);
+    document.getElementsByTagName("section")[0].style.display =
+    document.getElementById("planned-maintenance").style.display = "block";
+    document.getElementById("timeLeft").innerText = padZero(date.getUTCHours()) + ":" + padZero(date.getUTCMinutes()) + ":" + padZero(date.getUTCSeconds());
+  } else if(timeLeft > 0) {
+    var date = new Date(timeLeft);
+    document.getElementsByTagName("section")[0].style.display =
+    document.getElementById("ongoing-maintenance").style.display = "block";
+    document.getElementById("maintenance").innerText = padZero(date.getUTCHours()) + ":" + padZero(date.getUTCMinutes()) + ":" + padZero(date.getUTCSeconds());
+  } else {
+    document.getElementsByTagName("section")[0].style.display =
+    document.getElementById("ongoing-maintenance").style.display =
+    document.getElementById("planned-maintenance").style.display = "block";
+    maintenance_cache = null;
+    for(var i = 0; i < list.children.length; ++i) {
+      list.removeChild(list[i]);
+    }
+  }
+  return setTimeout(maintenance_do, 250);
+};
+var maintenance = function() {
+  GET(ROOT + "maintenance.json", function(status, response) {
+    if(status == 200) {
+      maintenance_cache = response;
+      maintenance_do();
+    }
+  });
 }
 var slim = [];
 var load =  function() {
@@ -77,11 +129,11 @@ var load =  function() {
     }
     status.appendChild(article);
   }
+  maintenance();
   check();
 };
 
 GET(ROOT + "server_map.json", function(status, response) {
-  console.log(status);
   document.getElementById("names").addEventListener("click", function(event) {
     event.preventDefault();
     this.className = "selected";

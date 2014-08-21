@@ -199,3 +199,20 @@ article a {
     padding: 0;
   }
 }
+
+section {
+  background: #222;
+  color: #eee;
+  margin-bottom: 15px;
+  font-size: 21px;
+  text-align: center;
+  padding: 15px;
+}
+
+section b {
+  display: block;
+}
+
+section, section > div {
+  display: none;
+}
