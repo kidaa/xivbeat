@@ -92,6 +92,11 @@ var FRONTIER_10 = function(app, db, router) {
         url: req.protocol + "://" + req.get("host") + "/frontier/1.0/article.json",
         params: ["id"],
         expires: 1000 * 60 * 60
+      },
+      maintenance: {
+        url: req.protocol + "://" + req.get("host") + "/frontier/1.0/maintenance.json",
+        params: [],
+        expires: 1000 * 60 * 60
       }
     });
   });
@@ -102,7 +107,7 @@ var FRONTIER_10 = function(app, db, router) {
       return res.end(ch);
     }
 
-    return frontier.getHeadlines(req.query.lang || "en-us", function(err, headlines) {
+    frontier.getHeadlines(req.query.lang || "en-us", function(err, headlines) {
       if(err) {
         return res.end({error: err});
       }
@@ -157,7 +162,7 @@ var FRONTIER_10 = function(app, db, router) {
       return res.end(ch);
     }
 
-    return frontier.getArticle(req.query.id || "", function(err, article) {
+    frontier.getArticle(req.query.id || "", function(err, article) {
       if(err) {
         return res.end({error: err});
       }
@@ -168,6 +173,22 @@ var FRONTIER_10 = function(app, db, router) {
 
       cache.set("article.json#" + req.query.id, article, 1000 * 60 * 60);
       return res.end(article);
+    });
+  });
+
+  router.get("/maintenance.json", function(req, res) {
+    var ch = cache.get("maintenance.json");
+    if(ch !== null) {
+      return res.end(ch);
+    }
+
+    frontier.getMaintenance(function(err, maintenance) {
+      if(err !== null) {
+        res.end({error: err});
+      }
+
+      cache.set("maintenance.json", maintenance, 1000 * 60 * 60);
+      return res.end(maintenance);
     });
   });
 
