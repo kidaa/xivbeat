@@ -33,7 +33,7 @@ var LODESTONE_10 = function(app, db, router) {
 
   router.get("/character/:id.json", function(req, res, next) {
     var id = req.params.id;
-    var ch = cache.get("CHARACTER#"+id+"-"+("no_icons" in req.query));
+    var ch = cache.get("CHARACTER#"+id+("no_icons" in req.query ? "NO_ICONS" : "ICONS"));
     if(ch === null) {
       lodestone.getCharacterInfo(id, !("no_icons" in req.query), function(err, result) {
         if(err != null) {
@@ -44,7 +44,7 @@ var LODESTONE_10 = function(app, db, router) {
           return next();
         } else {
           result.expires = Date.now() + 1000 * 60 * 60 * 24;
-          cache.set("CHARACTER#"+id, result, 1000 * 60 * 60 * 24);
+          cache.set("CHARACTER#"+id+("no_icons" in req.query ? "NO_ICONS" : "ICONS"), result, 1000 * 60 * 60 * 24);
           res.end(result);
         }
       });
