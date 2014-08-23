@@ -20,7 +20,7 @@ var LODESTONE_10 = function(app, db, router) {
       },
       character: {
         url: req.protocol + "://" + req.get("host") + "/lodestone/1.0/character/:id.json",
-        params: [],
+        params: ["no_icons"],
         expires: 1000 * 60 * 60 * 24
       },
       freeCompany: {
@@ -33,9 +33,9 @@ var LODESTONE_10 = function(app, db, router) {
 
   router.get("/character/:id.json", function(req, res, next) {
     var id = req.params.id;
-    var ch = cache.get("CHARACTER#"+id);
+    var ch = cache.get("CHARACTER#"+id+"-"+("no_icons" in req.query));
     if(ch === null) {
-      lodestone.getCharacterInfo(id, function(err, result) {
+      lodestone.getCharacterInfo(id, !("no_icons" in req.query), function(err, result) {
         if(err != null) {
           res.send(500);
           return res.end({error: err});
