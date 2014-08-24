@@ -1,0 +1,904 @@
+{
+  "1,0": [
+    {
+      "class": "miner",
+      "item": "Darksteel Ore",
+      "slot": 3,
+      "location": "Coerthas Central Highlands",
+      "coordinates": [
+        27,
+        19
+      ]
+    },
+    {
+      "class": "botanist",
+      "item": "Crawler Cocoon",
+      "slot": 4,
+      "location": "East Shroud",
+      "coordinates": [
+        22,
+        26
+      ]
+    },
+    {
+      "class": "botanist",
+      "item": "Grade 4 Carbonized Matter",
+      "slot": 1,
+      "location": "Mor Dhona",
+      "coordinates": [
+        32,
+        11
+      ]
+    },
+    {
+      "class": "botanist",
+      "item": "Lightning Cluster",
+      "slot": 2,
+      "location": "Mor Dhona",
+      "coordinates": [
+        32,
+        11
+      ]
+    },
+    {
+      "class": "botanist",
+      "item": "Fire Cluster",
+      "slot": 3,
+      "location": "Mor Dhona",
+      "coordinates": [
+        32,
+        11
+      ]
+    },
+    {
+      "class": "botanist",
+      "item": "Wind Cluster",
+      "slot": 4,
+      "location": "Mor Dhona",
+      "coordinates": [
+        32,
+        11
+      ]
+    },
+    {
+      "class": "botanist",
+      "item": "Water Cluster",
+      "slot": 5,
+      "location": "Mor Dhona",
+      "coordinates": [
+        32,
+        11
+      ]
+    },
+    {
+      "class": "botanist",
+      "item": "Ice Cluster",
+      "slot": 6,
+      "location": "Mor Dhona",
+      "coordinates": [
+        32,
+        11
+      ]
+    },
+    {
+      "class": "botanist",
+      "item": "Earth Cluster",
+      "slot": 7,
+      "location": "Mor Dhona",
+      "coordinates": [
+        32,
+        11
+      ]
+    }
+  ],
+  "2,0": [
+    {
+      "class": "miner",
+      "item": "Antumbral Rock",
+      "slot": 7,
+      "location": "Eastern Thanalan",
+      "coordinates": [
+        26,
+        19
+      ]
+    },
+    {
+      "class": "botanist",
+      "item": "Fragrant Log",
+      "slot": 6,
+      "location": "South Shroud",
+      "coordinates": [
+        18,
+        23
+      ]
+    },
+    {
+      "class": "botanist",
+      "item": "Shroud Tea Leaves",
+      "slot": 6,
+      "location": "Central Shroud",
+      "coordinates": [
+        16,
+        20
+      ]
+    }
+  ],
+  "3,0": [
+    {
+      "class": "miner",
+      "item": "Ferberite",
+      "slot": 6,
+      "location": "Northern Thanalan",
+      "coordinates": [
+        16,
+        19
+      ]
+    },
+    {
+      "class": "miner",
+      "item": "Raw Topaz",
+      "slot": 7,
+      "location": "Northern Thanalan",
+      "coordinates": [
+        16,
+        19
+      ]
+    },
+    {
+      "class": "miner",
+      "item": "Raw Iolite",
+      "slot": 8,
+      "location": "Northern Thanalan",
+      "coordinates": [
+        16,
+        19
+      ]
+    },
+    {
+      "class": "botanist",
+      "item": "Scarlet Sap",
+      "slot": 4,
+      "location": "North Shroud",
+      "coordinates": [
+        18,
+        26
+      ]
+    }
+  ],
+  "4,0": [
+    {
+      "class": "miner",
+      "item": "Native Gold",
+      "slot": 6,
+      "location": "Central Thanalan",
+      "coordinates": [
+        24,
+        16
+      ]
+    },
+    {
+      "class": "miner",
+      "item": "Raw Diamond",
+      "slot": 8,
+      "location": "Central Thanalan",
+      "coordinates": [
+        24,
+        16
+      ]
+    },
+    {
+      "class": "miner",
+      "item": "Raw Emerald",
+      "slot": 7,
+      "location": "Central Thanalan",
+      "coordinates": [
+        24,
+        16
+      ]
+    }
+  ],
+  "5,0": [
+    {
+      "class": "miner",
+      "item": "Water Cluster",
+      "slot": 5,
+      "location": "Western Thanalan",
+      "coordinates": [
+        18,
+        27
+      ]
+    },
+    {
+      "class": "miner",
+      "item": "Gold Sand",
+      "slot": 2,
+      "location": "Eastern Thanalan",
+      "coordinates": [
+        25,
+        22
+      ]
+    },
+    {
+      "class": "botanist",
+      "item": "Trillium",
+      "slot": 1,
+      "location": "East Shroud",
+      "coordinates": [
+        17,
+        19
+      ]
+    },
+    {
+      "class": "botanist",
+      "item": "Honey Lemon",
+      "slot": 2,
+      "location": "Eastern La Noscea",
+      "coordinates": [
+        26,
+        32
+      ]
+    },
+    {
+      "class": "botanist",
+      "item": "Grade 4 Carbonized Matter",
+      "slot": 1,
+      "location": "Mor Dhona",
+      "coordinates": [
+        32,
+        21
+      ]
+    },
+    {
+      "class": "botanist",
+      "item": "Lightning Cluster",
+      "slot": 2,
+      "location": "Mor Dhona",
+      "coordinates": [
+        32,
+        21
+      ]
+    },
+    {
+      "class": "botanist",
+      "item": "Fire Cluster",
+      "slot": 3,
+      "location": "Mor Dhona",
+      "coordinates": [
+        32,
+        21
+      ]
+    },
+    {
+      "class": "botanist",
+      "item": "Wind Cluster",
+      "slot": 4,
+      "location": "Mor Dhona",
+      "coordinates": [
+        32,
+        21
+      ]
+    },
+    {
+      "class": "botanist",
+      "item": "Water Cluster",
+      "slot": 5,
+      "location": "Mor Dhona",
+      "coordinates": [
+        32,
+        21
+      ]
+    },
+    {
+      "class": "botanist",
+      "item": "Ice Cluster",
+      "slot": 6,
+      "location": "Mor Dhona",
+      "coordinates": [
+        32,
+        21
+      ]
+    },
+    {
+      "class": "botanist",
+      "item": "Earth Cluster",
+      "slot": 7,
+      "location": "Mor Dhona",
+      "coordinates": [
+        32,
+        21
+      ]
+    }
+  ],
+  "6,0": [
+    {
+      "class": "miner",
+      "item": "Umbral Rock",
+      "slot": 7,
+      "location": "South Shroud",
+      "coordinates": [
+        16,
+        31
+      ]
+    },
+    {
+      "class": "botanist",
+      "item": "Young Cieldalaes Spinach",
+      "slot": 6,
+      "location": "Lower La Noscea",
+      "coordinates": [
+        32,
+        11
+      ]
+    },
+    {
+      "class": "botanist",
+      "item": "Redolent Log",
+      "slot": 6,
+      "location": "Central Shroud",
+      "coordinates": [
+        30,
+        19
+      ]
+    },
+    {
+      "class": "fisher",
+      "item": "Sunrise"
+    }
+  ],
+  "7,0": [
+    {
+      "class": "botanist",
+      "item": "Blood Orange",
+      "slot": 2,
+      "location": "Upper La Noscea",
+      "coordinates": [
+        28,
+        25
+      ]
+    },
+    {
+      "class": "botanist",
+      "item": "Bamboo Stick",
+      "slot": 6,
+      "location": "Upper La Noscea",
+      "coordinates": [
+        28,
+        25
+      ]
+    }
+  ],
+  "8,0": [
+    {
+      "class": "botanist",
+      "item": "La Noscean Leek",
+      "slot": 6,
+      "location": "Western La Noscea",
+      "coordinates": [
+        34,
+        28
+      ]
+    },
+    {
+      "class": "botanist",
+      "item": "Waterfowl Feather",
+      "slot": 6,
+      "location": "Western La Noscea",
+      "coordinates": [
+        34,
+        28
+      ]
+    },
+    {
+      "class": "fisher",
+      "item": "Weather Change"
+    }
+  ],
+  "9,0": [
+    {
+      "class": "miner",
+      "item": "Gold Ore",
+      "slot": 6,
+      "location": "Eastern Thanalan",
+      "coordinates": [
+        28,
+        22
+      ]
+    },
+    {
+      "class": "miner",
+      "item": "Coblyn Larva",
+      "slot": 7,
+      "location": "Eastern Thanalan",
+      "coordinates": [
+        26,
+        22
+      ]
+    },
+    {
+      "class": "botanist",
+      "item": "Apricot",
+      "slot": 2,
+      "location": "Middle La Noscea",
+      "coordinates": [
+        19,
+        16
+      ]
+    },
+    {
+      "class": "botanist",
+      "item": "Spruce Log",
+      "slot": 6,
+      "location": "Coerthas Central Highlands",
+      "coordinates": [
+        27,
+        12
+      ]
+    },
+    {
+      "class": "botanist",
+      "item": "Prickly Pineapple",
+      "slot": 4,
+      "location": "Eastern La Noscea",
+      "coordinates": [
+        30,
+        26
+      ]
+    },
+    {
+      "class": "botanist",
+      "item": "Grade 4 Carbonized Matter",
+      "slot": 1,
+      "location": "Mor Dhona",
+      "coordinates": [
+        32,
+        11
+      ]
+    },
+    {
+      "class": "botanist",
+      "item": "Lightning Cluster",
+      "slot": 2,
+      "location": "Mor Dhona",
+      "coordinates": [
+        32,
+        11
+      ]
+    },
+    {
+      "class": "botanist",
+      "item": "Fire Cluster",
+      "slot": 3,
+      "location": "Mor Dhona",
+      "coordinates": [
+        32,
+        11
+      ]
+    },
+    {
+      "class": "botanist",
+      "item": "Wind Cluster",
+      "slot": 4,
+      "location": "Mor Dhona",
+      "coordinates": [
+        32,
+        11
+      ]
+    },
+    {
+      "class": "botanist",
+      "item": "Water Cluster",
+      "slot": 5,
+      "location": "Mor Dhona",
+      "coordinates": [
+        32,
+        11
+      ]
+    },
+    {
+      "class": "botanist",
+      "item": "Ice Cluster",
+      "slot": 6,
+      "location": "Mor Dhona",
+      "coordinates": [
+        32,
+        11
+      ]
+    },
+    {
+      "class": "botanist",
+      "item": "Earth Cluster",
+      "slot": 7,
+      "location": "Mor Dhona",
+      "coordinates": [
+        32,
+        11
+      ]
+    }
+  ],
+  "10,0": [
+    {
+      "class": "fisher",
+      "item": "Mahi-Mahi",
+      "location": "Lower La Noscea",
+      "coordinates": [
+        24,
+        39
+      ]
+    }
+  ],
+  "11,0": [
+    {
+      "class": "fisher",
+      "item": "Mahi-Mahi",
+      "location": "Lower La Noscea",
+      "coordinates": [
+        24,
+        39
+      ]
+    }
+  ],
+  "12,0": [
+    {
+      "class": "fisher",
+      "item": "Weather Change"
+    }
+  ],
+  "13,0": [
+    {
+      "class": "miner",
+      "item": "Grade 4 Carbonized Matter",
+      "slot": 1,
+      "location": "Mor Dhona",
+      "coordinates": [
+        28,
+        12
+      ]
+    },
+    {
+      "class": "miner",
+      "item": "Lightning Cluster",
+      "slot": 2,
+      "location": "Mor Dhona",
+      "coordinates": [
+        28,
+        12
+      ]
+    },
+    {
+      "class": "miner",
+      "item": "Fire Cluster",
+      "slot": 3,
+      "location": "Mor Dhona",
+      "coordinates": [
+        28,
+        12
+      ]
+    },
+    {
+      "class": "miner",
+      "item": "Wind Cluster",
+      "slot": 4,
+      "location": "Mor Dhona",
+      "coordinates": [
+        28,
+        12
+      ]
+    },
+    {
+      "class": "miner",
+      "item": "Water Cluster",
+      "slot": 5,
+      "location": "Mor Dhona",
+      "coordinates": [
+        28,
+        12
+      ]
+    },
+    {
+      "class": "miner",
+      "item": "Ice Cluster",
+      "slot": 6,
+      "location": "Mor Dhona",
+      "coordinates": [
+        28,
+        12
+      ]
+    },
+    {
+      "class": "miner",
+      "item": "Earth Cluster",
+      "slot": 7,
+      "location": "Mor Dhona",
+      "coordinates": [
+        28,
+        12
+      ]
+    },
+    {
+      "class": "botanist",
+      "item": "Vampire Plant",
+      "slot": 8,
+      "location": "Coerthas Central Highlands",
+      "coordinates": [
+        27,
+        24
+      ]
+    },
+    {
+      "class": "botanist",
+      "item": "Black Truffle",
+      "slot": 7,
+      "location": "Eastern Thanalan",
+      "coordinates": [
+        12,
+        16
+      ]
+    },
+    {
+      "class": "botanist",
+      "item": "Dzemael Tomato",
+      "slot": 3,
+      "location": "Eastern La Noscea",
+      "coordinates": [
+        18,
+        26
+      ]
+    }
+  ],
+  "16,0": [
+    {
+      "class": "fisher",
+      "item": "Mahi-Mahi",
+      "location": "Lower La Noscea",
+      "coordinates": [
+        24,
+        39
+      ]
+    },
+    {
+      "class": "fisher",
+      "item": "Weather Change"
+    }
+  ],
+  "17,0": [
+    {
+      "class": "miner",
+      "item": "Volcanic Rock Salt",
+      "slot": 1,
+      "location": "Eastern La Noscea",
+      "coordinates": [
+        21,
+        32
+      ]
+    },
+    {
+      "class": "miner",
+      "item": "Grade 4 Carbonized Matter",
+      "slot": 1,
+      "location": "Mor Dhona",
+      "coordinates": [
+        27,
+        10
+      ]
+    },
+    {
+      "class": "miner",
+      "item": "Lightning Cluster",
+      "slot": 2,
+      "location": "Mor Dhona",
+      "coordinates": [
+        27,
+        10
+      ]
+    },
+    {
+      "class": "miner",
+      "item": "Fire Cluster",
+      "slot": 3,
+      "location": "Mor Dhona",
+      "coordinates": [
+        27,
+        10
+      ]
+    },
+    {
+      "class": "miner",
+      "item": "Wind Cluster",
+      "slot": 4,
+      "location": "Mor Dhona",
+      "coordinates": [
+        27,
+        10
+      ]
+    },
+    {
+      "class": "miner",
+      "item": "Water Cluster",
+      "slot": 5,
+      "location": "Mor Dhona",
+      "coordinates": [
+        27,
+        10
+      ]
+    },
+    {
+      "class": "miner",
+      "item": "Ice Cluster",
+      "slot": 6,
+      "location": "Mor Dhona",
+      "coordinates": [
+        27,
+        10
+      ]
+    },
+    {
+      "class": "miner",
+      "item": "Earth Cluster",
+      "slot": 7,
+      "location": "Mor Dhona",
+      "coordinates": [
+        27,
+        10
+      ]
+    },
+    {
+      "class": "botanist",
+      "item": "Thavnairian Mistletoe",
+      "slot": 2,
+      "location": "Coerthas Central Highlands",
+      "coordinates": [
+        8,
+        13
+      ]
+    },
+    {
+      "class": "fisher",
+      "item": "Mahi-Mahi",
+      "location": "Lower La Noscea",
+      "coordinates": [
+        24,
+        39
+      ]
+    }
+  ],
+  "18,0": [
+    {
+      "class": "miner",
+      "item": "Raw Ruby",
+      "slot": 7,
+      "location": "Lower La Noscea",
+      "coordinates": [
+        23,
+        21
+      ]
+    },
+    {
+      "class": "miner",
+      "item": "Raw Sapphire",
+      "slot": 8,
+      "location": "Lower La Noscea",
+      "coordinates": [
+        23,
+        21
+      ]
+    },
+    {
+      "class": "fisher",
+      "item": "Sunset"
+    }
+  ],
+  "19,0": [
+    {
+      "class": "miner",
+      "item": "Fire Cluster",
+      "slot": 3,
+      "location": "Middle La Noscea",
+      "coordinates": [
+        25,
+        27
+      ]
+    }
+  ],
+  "21,0": [
+    {
+      "class": "miner",
+      "item": "Astral Rock",
+      "slot": 7,
+      "location": "Coerthas Central Highlands",
+      "coordinates": [
+        23,
+        23
+      ]
+    },
+    {
+      "class": "miner",
+      "item": "Grade 4 Carbonized Matter",
+      "slot": 1,
+      "location": "Mor Dhona",
+      "coordinates": [
+        27,
+        10
+      ]
+    },
+    {
+      "class": "miner",
+      "item": "Lightning Cluster",
+      "slot": 2,
+      "location": "Mor Dhona",
+      "coordinates": [
+        27,
+        10
+      ]
+    },
+    {
+      "class": "miner",
+      "item": "Fire Cluster",
+      "slot": 3,
+      "location": "Mor Dhona",
+      "coordinates": [
+        27,
+        10
+      ]
+    },
+    {
+      "class": "miner",
+      "item": "Wind Cluster",
+      "slot": 4,
+      "location": "Mor Dhona",
+      "coordinates": [
+        27,
+        10
+      ]
+    },
+    {
+      "class": "miner",
+      "item": "Water Cluster",
+      "slot": 5,
+      "location": "Mor Dhona",
+      "coordinates": [
+        27,
+        10
+      ]
+    },
+    {
+      "class": "miner",
+      "item": "Ice Cluster",
+      "slot": 6,
+      "location": "Mor Dhona",
+      "coordinates": [
+        27,
+        10
+      ]
+    },
+    {
+      "class": "miner",
+      "item": "Earth Cluster",
+      "slot": 7,
+      "location": "Mor Dhona",
+      "coordinates": [
+        27,
+        10
+      ]
+    },
+    {
+      "class": "botanist",
+      "item": "Kidragora",
+      "slot": 7,
+      "location": "East Shroud",
+      "coordinates": [
+        13,
+        23
+      ]
+    },
+    {
+      "class": "botanist",
+      "item": "Trillium Bulb",
+      "slot": 8,
+      "location": "East Shroud",
+      "coordinates": [
+        13,
+        23
+      ]
+    }
+  ]
+}
