@@ -4,18 +4,18 @@
 //middleware because subdomain switch.
 var path = require("path"),
     static = require("serve-static"),
-    fs = require("fs"),
+    faye = require("faye"),
     Router = require("express").Router;
 
-var TIME = function(app, db, subdomain, root) {=
-  root.get("/script/data.js", function(req, res) {
-    res.mime("js");
-    res.end("window.nodes = " + fs.readFileSync(path.resolve(__dirname, "pub", "script", "data.json")));
-  });
+var PF = function(app, db, subdomain, root) {=
+
+  var adapter = new faye.NodeAdapter({mount: "/faye", timeout: 60});
 
   root.use(static(path.resolve(__dirname, "pub")));
+
+  adapter.attach(root);
 
   app.use(subdomain("time", root));
 }
 
-exports = module.exports = TIME;
+exports = module.exports = PF;

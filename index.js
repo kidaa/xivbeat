@@ -13,7 +13,8 @@ app.set("views", "./view");
 var db = null;
 
 require("./subdomain/api/")(app, db, subdomain, express.Router());
-require("./subdomain/atma/")(app, db, subdomain, express.Router());
+require("./subdomain/time/")(app, db, subdomain, express.Router());
+require("./subdomain/pf/")(app, db, subdomain, express.Router());
 require("./route/index.js")(app, db);
 app.use(static("./pub"));
 

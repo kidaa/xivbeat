@@ -193,6 +193,81 @@
         }
       }
     },
+    "faye": {
+      "version": "1.0.3",
+      "from": "faye@",
+      "resolved": "https://registry.npmjs.org/faye/-/faye-1.0.3.tgz",
+      "dependencies": {
+        "concat-stream": {
+          "version": "1.4.6",
+          "from": "concat-stream@",
+          "resolved": "https://registry.npmjs.org/concat-stream/-/concat-stream-1.4.6.tgz",
+          "dependencies": {
+            "inherits": {
+              "version": "2.0.1",
+              "from": "inherits@~2.0.1",
+              "resolved": "https://registry.npmjs.org/inherits/-/inherits-2.0.1.tgz"
+            },
+            "typedarray": {
+              "version": "0.0.6",
+              "from": "typedarray@~0.0.5",
+              "resolved": "https://registry.npmjs.org/typedarray/-/typedarray-0.0.6.tgz"
+            },
+            "readable-stream": {
+              "version": "1.1.13",
+              "from": "readable-stream@~1.1.9",
+              "resolved": "https://registry.npmjs.org/readable-stream/-/readable-stream-1.1.13.tgz",
+              "dependencies": {
+                "core-util-is": {
+                  "version": "1.0.1",
+                  "from": "core-util-is@~1.0.0",
+                  "resolved": "https://registry.npmjs.org/core-util-is/-/core-util-is-1.0.1.tgz"
+                },
+                "isarray": {
+                  "version": "0.0.1",
+                  "from": "isarray@0.0.1",
+                  "resolved": "https://registry.npmjs.org/isarray/-/isarray-0.0.1.tgz"
+                },
+                "string_decoder": {
+                  "version": "0.10.31",
+                  "from": "string_decoder@~0.10.x",
+                  "resolved": "https://registry.npmjs.org/string_decoder/-/string_decoder-0.10.31.tgz"
+                }
+              }
+            }
+          }
+        },
+        "cookiejar": {
+          "version": "2.0.1",
+          "from": "cookiejar@",
+          "resolved": "https://registry.npmjs.org/cookiejar/-/cookiejar-2.0.1.tgz"
+        },
+        "csprng": {
+          "version": "0.1.1",
+          "from": "csprng@",
+          "resolved": "https://registry.npmjs.org/csprng/-/csprng-0.1.1.tgz",
+          "dependencies": {
+            "sequin": {
+              "version": "0.1.0",
+              "from": "sequin@",
+              "resolved": "https://registry.npmjs.org/sequin/-/sequin-0.1.0.tgz"
+            }
+          }
+        },
+        "faye-websocket": {
+          "version": "0.7.2",
+          "from": "faye-websocket@>=0.7.0",
+          "resolved": "https://registry.npmjs.org/faye-websocket/-/faye-websocket-0.7.2.tgz",
+          "dependencies": {
+            "websocket-driver": {
+              "version": "0.3.5",
+              "from": "websocket-driver@>=0.3.1",
+              "resolved": "https://registry.npmjs.org/websocket-driver/-/websocket-driver-0.3.5.tgz"
+            }
+          }
+        }
+      }
+    },
     "jsdom": {
       "version": "0.11.1",
       "from": "jsdom@",
