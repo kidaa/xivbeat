@@ -29,10 +29,20 @@ var FRONTIER_10 = function(app, db, router) {
 
       cache.set("slim.json", status);
     });
-  };
+  }, fetchServerMaintenance = function() {
+    frontier.getMaintenance(function(err, maintenance) {
+      setTimeout(fetchServerMaintenance, 1000 * 58);
+      if(err) {
+        return;
+      }
+
+      cache.set("maintenance.json", maintenance);
+    });
+  }
 
   fetchServerStatus();
   fetchServerSlim();
+  fetchServerMaintenance();
 
   router.use(static(path.resolve(__dirname, "pub")));
 
@@ -96,7 +106,7 @@ var FRONTIER_10 = function(app, db, router) {
       maintenance: {
         url: req.protocol + "://" + req.get("host") + "/frontier/1.0/maintenance.json",
         params: [],
-        expires: 1000 * 60 * 60
+        expires: 1000 * 60
       }
     });
   });
@@ -178,18 +188,7 @@ var FRONTIER_10 = function(app, db, router) {
 
   router.get("/maintenance.json", function(req, res) {
     var ch = cache.get("maintenance.json");
-    if(ch !== null) {
-      return res.end(ch);
-    }
-
-    frontier.getMaintenance(function(err, maintenance) {
-      if(err !== null) {
-        res.end({error: err});
-      }
-
-      cache.set("maintenance.json", maintenance, 1000 * 60 * 60);
-      return res.end(maintenance);
-    });
+    return res.end(ch || {});
   });
 
   return router;

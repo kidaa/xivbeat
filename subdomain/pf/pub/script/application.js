@@ -6,7 +6,7 @@ var MASK_TANK  = 1,
     //byte 2
     MASK_HEAD  = 1,
     MASK_BODY  = 2,
-    MASK_HAND  = 4
+    MASK_HAND  = 4,
     MASK_BELT  = 8,
     MASK_LEGS  = 16,
     MASK_FEET  = 32,

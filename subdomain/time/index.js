@@ -7,7 +7,7 @@ var path = require("path"),
     fs = require("fs"),
     Router = require("express").Router;
 
-var TIME = function(app, db, subdomain, root) {=
+var TIME = function(app, db, subdomain, root) {
   root.get("/script/data.js", function(req, res) {
     res.mime("js");
     res.end("window.nodes = " + fs.readFileSync(path.resolve(__dirname, "pub", "script", "data.json")));

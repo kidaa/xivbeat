@@ -72,7 +72,7 @@ var maintenance_do = function() {
     var date = new Date(timeUntil);
     document.getElementsByTagName("section")[0].style.display =
     document.getElementById("planned-maintenance").style.display = "block";
-    document.getElementById("timeLeft").innerText = padZero(date.getUTCHours()) + ":" + padZero(date.getUTCMinutes()) + ":" + padZero(date.getUTCSeconds());
+    document.getElementById("timeleft").innerText = padZero(date.getUTCHours()) + ":" + padZero(date.getUTCMinutes()) + ":" + padZero(date.getUTCSeconds());
   } else if(timeLeft > 0) {
     var date = new Date(timeLeft);
     document.getElementsByTagName("section")[0].style.display =

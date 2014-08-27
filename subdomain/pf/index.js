@@ -7,13 +7,13 @@ var path = require("path"),
     faye = require("faye"),
     Router = require("express").Router;
 
-var PF = function(app, db, subdomain, root) {=
+var PF = function(app, db, subdomain, root) {
 
   var adapter = new faye.NodeAdapter({mount: "/faye", timeout: 60});
 
   root.use(static(path.resolve(__dirname, "pub")));
 
-  adapter.attach(root);
+  // adapter.attach(root);
 
   app.use(subdomain("time", root));
 }
