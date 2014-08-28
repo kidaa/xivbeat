@@ -73,7 +73,7 @@ var maintenance_do = function() {
     document.getElementsByTagName("section")[0].style.display =
     document.getElementById("planned-maintenance").style.display = "block";
     if(timeUntil > 86400000) {
-      document.getElementById("timeleft").innerText = padZero(Math.ceil(timeUntil / 86400000)) + "day" + (Math.ceil(timeUntil / 86400000) == 1 ? "" : "s");
+      document.getElementById("timeleft").innerText = "About " + Math.ceil(timeUntil / 86400000) + " day" + (Math.ceil(timeUntil / 86400000) == 1 ? "" : "s");
     } else {
       document.getElementById("timeleft").innerText = padZero(date.getUTCHours()) + ":" + padZero(date.getUTCMinutes()) + ":" + padZero(date.getUTCSeconds());
     }
