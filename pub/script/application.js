@@ -72,7 +72,11 @@ var maintenance_do = function() {
     var date = new Date(timeUntil);
     document.getElementsByTagName("section")[0].style.display =
     document.getElementById("planned-maintenance").style.display = "block";
-    document.getElementById("timeleft").innerText = padZero(date.getUTCHours()) + ":" + padZero(date.getUTCMinutes()) + ":" + padZero(date.getUTCSeconds());
+    if(timeUntil > 86400000) {
+      document.getElementById("timeleft").innerText = padZero(Math.ceil(timeUntil / 86400000)) + "day" + (Math.ceil(timeUntil / 86400000) == 1 ? "" : "s");
+    } else {
+      document.getElementById("timeleft").innerText = padZero(date.getUTCHours()) + ":" + padZero(date.getUTCMinutes()) + ":" + padZero(date.getUTCSeconds());
+    }
   } else if(timeLeft > 0) {
     var date = new Date(timeLeft);
     document.getElementsByTagName("section")[0].style.display =
