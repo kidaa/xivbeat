@@ -5,7 +5,10 @@ var EZ_TIME_CONSTANT = 20.571428571428574,
     eorzea_time = document.getElementById("eorzea_time"),
     real_time = document.getElementById("real_time"),
     left = document.getElementById("left"),
-    right = document.getElementById("right");
+    right = document.getElementById("right"),
+    settingsRows = document.getElementById("rows"),
+    settings = document.getElementById("settings"),
+    blacken = document.getElementById("blacken");
 
 var getEorzeaTime = function() {
   return Math.floor(Date.now() * EZ_TIME_CONSTANT);
@@ -32,6 +35,13 @@ var getEorzeaTime = function() {
     }
   }
   return timeDifference;
+}, playSound = function(se) {
+  var se = "/se/"+se+".mp3";
+  var a = new Audio();
+  a.src = se;
+  a.volume = 1;
+  a.play();
+  console.log(a);
 }, tick = function() {
   var start = Date.now();
   var now = getEorzeaTime(),
@@ -47,6 +57,11 @@ var getEorzeaTime = function() {
     while(right.children.length) {
       right.removeChild(right.children[0]);
     }
+
+    if(document.getElementById("seenabled"+hour) !== null && document.getElementById("seenabled"+hour).checked) {
+      playSound(document.getElementById("se"+hour).value);
+    }
+
     var ul = document.createElement("ul");
     for(var i = 0; i < 24; ++i) {
       var n = data[i];
@@ -60,6 +75,7 @@ var getEorzeaTime = function() {
         hour -= 12;
         meridiem = "PM";
       }
+
       li.innerText = ("0" + hour).substr(-2) + ":00 " + meridiem;
 
       var timeDifference = calculateHours(last_hour, n.hour);
@@ -147,7 +163,66 @@ var getEorzeaTime = function() {
   for(var key in window.nodes) {
     var number = parseInt(key);
     logicdata[number] = {hour: number, nodes: window.nodes[key]};
+
+    var row = document.createElement("div");
+    row.className = "row";
+    var checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.id = "seenabled"+number;
+    checkbox.checked = localStorage[checkbox.id] || false;
+    checkbox.addEventListener("mousedown", function(event) {
+      localStorage[event.target.id] = event.target.checked;
+    }, false);
+    row.appendChild(checkbox);
+
+    var rowTime = document.createElement("span");
+
+    var rt = number, meridiem = "AM";
+    if(rt > 11) {
+      rt -= 12;
+      meridiem = "PM";
+    }
+    rowTime.innerText = ("00" + rt).substr(-2) + ":00 " + meridiem;
+    row.appendChild(rowTime);
+
+    var span1 = document.createElement("span");
+    span1.innerText = " | Sound Effect #";
+    row.appendChild(span1);
+
+    var rowNumber = document.createElement("input");
+    rowNumber.id = "se"+number;
+    rowNumber.min = 1;
+    rowNumber.max = 16;
+    rowNumber.value = localStorage[rowNumber.id] || 1;
+    rowNumber.type = "number";
+    rowNumber.addEventListener("change", function(event) {
+      localStorage[event.target.id] = event.target.value;
+    }, false);
+    row.appendChild(rowNumber);
+
+    var span2 = document.createElement("span");
+    span2.innerText = " | ";
+    row.appendChild(span2);
+
+    var button = document.createElement("button");
+    button.innerText = "Test";
+    button.id="sebutton"+number;
+    row.appendChild(button);
+    button.addEventListener("mouseup", function(event) {
+      playSound(document.getElementById("se"+event.target.id.replace("sebutton", "")).value);
+    }, false);
+
+    settingsRows.appendChild(row);
   }
+
+  document.getElementById("close").addEventListener("mousedown", function() {
+    settings.style.display = blacken.style.display = "none";
+  }, false);
+
+  document.getElementById("cog").addEventListener("mousedown", function() {
+    settings.style.display = blacken.style.display = "block";
+  }, false);
+
   tick();
 }, sortByTime = function(hours) {
   var _ = logicdata.concat([]);
