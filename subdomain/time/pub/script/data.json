@@ -210,6 +210,16 @@
     },
     {
       "class": "miner",
+      "item": "Grade 3 Thanalan Topsoil",
+      "slot": 8,
+      "location": "Western Thanalan",
+      "coordinates": [
+        18,
+        27
+      ]
+    },
+    {
+      "class": "miner",
       "item": "Gold Sand",
       "slot": 2,
       "location": "Eastern Thanalan",
@@ -313,6 +323,16 @@
     {
       "class": "miner",
       "item": "Umbral Rock",
+      "slot": 7,
+      "location": "South Shroud",
+      "coordinates": [
+        16,
+        31
+      ]
+    },
+    {
+      "class": "miner",
+      "item": "Grade 3 Shroud Topsoil",
       "slot": 7,
       "location": "South Shroud",
       "coordinates": [
@@ -791,6 +811,16 @@
     {
       "class": "miner",
       "item": "Fire Cluster",
+      "slot": 3,
+      "location": "Middle La Noscea",
+      "coordinates": [
+        25,
+        27
+      ]
+    },
+    {
+      "class": "miner",
+      "item": "Grade 3 La Noscean Topsoil",
       "slot": 3,
       "location": "Middle La Noscea",
       "coordinates": [
