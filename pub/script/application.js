@@ -88,7 +88,7 @@ var maintenance_do = function() {
     document.getElementById("planned-maintenance").style.display = "none";
     maintenance_cache = null;
     for(var i = 0; i < list.children.length; ++i) {
-      list.removeChild(list[i]);
+      list.removeChild(list.children[i]);
     }
   }
   return setTimeout(maintenance_do, 250);
