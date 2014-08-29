@@ -1,5 +1,5 @@
 {
-  "1,0": [
+  "1": [
     {
       "class": "miner",
       "item": "Darksteel Ore",
@@ -91,7 +91,7 @@
       ]
     }
   ],
-  "2,0": [
+  "2": [
     {
       "class": "miner",
       "item": "Antumbral Rock",
@@ -123,7 +123,7 @@
       ]
     }
   ],
-  "3,0": [
+  "3": [
     {
       "class": "miner",
       "item": "Ferberite",
@@ -165,7 +165,7 @@
       ]
     }
   ],
-  "4,0": [
+  "4": [
     {
       "class": "miner",
       "item": "Native Gold",
@@ -197,7 +197,7 @@
       ]
     }
   ],
-  "5,0": [
+  "5": [
     {
       "class": "miner",
       "item": "Water Cluster",
@@ -309,7 +309,7 @@
       ]
     }
   ],
-  "6,0": [
+  "6": [
     {
       "class": "miner",
       "item": "Umbral Rock",
@@ -345,7 +345,7 @@
       "item": "Sunrise"
     }
   ],
-  "7,0": [
+  "7": [
     {
       "class": "botanist",
       "item": "Blood Orange",
@@ -367,7 +367,7 @@
       ]
     }
   ],
-  "8,0": [
+  "8": [
     {
       "class": "botanist",
       "item": "La Noscean Leek",
@@ -393,7 +393,7 @@
       "item": "Weather Change"
     }
   ],
-  "9,0": [
+  "9": [
     {
       "class": "miner",
       "item": "Gold Ore",
@@ -515,7 +515,7 @@
       ]
     }
   ],
-  "10,0": [
+  "10": [
     {
       "class": "fisher",
       "item": "Mahi-Mahi",
@@ -526,7 +526,7 @@
       ]
     }
   ],
-  "11,0": [
+  "11": [
     {
       "class": "fisher",
       "item": "Mahi-Mahi",
@@ -537,13 +537,13 @@
       ]
     }
   ],
-  "12,0": [
+  "12": [
     {
       "class": "fisher",
       "item": "Weather Change"
     }
   ],
-  "13,0": [
+  "13": [
     {
       "class": "miner",
       "item": "Grade 4 Carbonized Matter",
@@ -645,7 +645,7 @@
       ]
     }
   ],
-  "16,0": [
+  "16": [
     {
       "class": "fisher",
       "item": "Mahi-Mahi",
@@ -660,7 +660,7 @@
       "item": "Weather Change"
     }
   ],
-  "17,0": [
+  "17": [
     {
       "class": "miner",
       "item": "Volcanic Rock Salt",
@@ -761,7 +761,7 @@
       ]
     }
   ],
-  "18,0": [
+  "18": [
     {
       "class": "miner",
       "item": "Raw Ruby",
@@ -787,7 +787,7 @@
       "item": "Sunset"
     }
   ],
-  "19,0": [
+  "19": [
     {
       "class": "miner",
       "item": "Fire Cluster",
@@ -799,7 +799,7 @@
       ]
     }
   ],
-  "21,0": [
+  "21": [
     {
       "class": "miner",
       "item": "Astral Rock",

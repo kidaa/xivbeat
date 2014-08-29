@@ -1,18 +1,160 @@
-var EZ_TIME_CONSTANT = 20.571428571428574;
+var EZ_TIME_CONSTANT = 20.571428571428574,
+    logicdata = new Array(24),
+    last_hour = -1,
+    data = undefined,
+    eorzea_time = document.getElementById("eorzea_time"),
+    real_time = document.getElementById("real_time"),
+    left = document.getElementById("left"),
+    right = document.getElementById("right");
 
 var getEorzeaTime = function() {
-    return Math.floor(Date.now() * EZ_TIME_CONSTANT);
-}, formatTime: function(epoch) {
+  return Math.floor(Date.now() * EZ_TIME_CONSTANT);
+}, formatTime = function(epoch) {
   var date = new Date(epoch);
   var h = date.getUTCHours(), m = date.getUTCMinutes();
   var meridiem = "AM";
   if(h > 11) {
+    h -= 12;
     meridiem = "PM";
   }
 
-  return ("0" + h).substr(-2) + ":" + ("0" + m).substr(-2) + " " + meridiem;
+  return ("0" + h).substr(-2) + ":" + ("0" + m).substr(-2) + ":" + ("0" + date.getUTCSeconds()).substr(-2) + " " + meridiem;
 }, remaining = function(futureHours) {
-  return new Date(175 * futureHours * 1000)).getTime() / 1000 / 60`;
+  return new Date(175 * futureHours * 1000).getTime() / 1000 / 60;
+}, calculateHours = function(last, hour) {
+  var timeDifference = 0;
+  if(hour == last || hour == last + 1) {
+    timeDifference = 1;
+  } else {
+    timeDifference = hour - last;
+    if(timeDifference < 1) {
+      timeDifference += 24;
+    }
+  }
+  return timeDifference;
 }, tick = function() {
+  var start = Date.now();
+  var now = getEorzeaTime(),
+      date = new Date(now),
+      hour = date.getUTCHours();
 
-};
+  if(last_hour != hour) {
+    data = sortByTime(hour);
+    last_hour = hour;
+    while(left.children.length) {
+      left.removeChild(left.children[0]);
+    }
+    while(right.children.length) {
+      right.removeChild(right.children[0]);
+    }
+    var ul = document.createElement("ul");
+    for(var i = 0; i < 24; ++i) {
+      var n = data[i];
+      if(n === undefined) {
+        continue;
+      }
+      var li = document.createElement("li");
+      var hour = n.hour,
+          meridiem = "AM";
+      if(hour > 11) {
+        hour -= 12;
+        meridiem = "PM";
+      }
+      li.innerText = ("0" + hour).substr(-2) + ":00 " + meridiem;
+
+      var timeDifference = calculateHours(last_hour, n.hour);
+      var timeLeft = document.createElement("span");
+      timeLeft.dataset.fh = timeDifference;
+      var minuteDifference = 60 - date.getUTCMinutes();
+      timeDifference -= (1 - (minuteDifference / 60));
+      timeLeft.innerText = Math.floor(remaining(timeDifference));
+      if(timeLeft.innerText == "0") {
+        timeLeft.innerText = "LESS THAN 1";
+      }
+      timeLeft.className = "countdown";
+      if(n.hour == last_hour) {
+        timeLeft.className += " active";
+      }
+      li.dataset.fh = n.hour;
+      li.appendChild(timeLeft);
+      ul.appendChild(li);
+
+      var n_ul = document.createElement("ul");
+      n_ul.id = "nodes"+n.hour;
+      for(var j = 0; j < n.nodes.length; ++j) {
+        var node = n.nodes[j];
+        var n_li = document.createElement("li");
+        var c = document.createElement("span"),
+            it = document.createElement("span"),
+            s = document.createElement("span"),
+            l = document.createElement("span");
+
+        c.className = "class";
+        it.className = "item";
+        s.className = "slot";
+        l.className = "location";
+
+        n_li.className = c.innerText = node.class;
+        it.innerText = node.item;
+        if("location" in node) {
+          l.innerText = node.location + " (" + node.coordinates[0] + ", " + node.coordinates[1] + ")";
+        }
+
+        if("slot" in node) {
+          s.innerText = "Slot #"+node.slot;
+        }
+
+        n_li.appendChild(c);
+        n_li.appendChild(it);
+        n_li.appendChild(s);
+        n_li.appendChild(l);
+
+        n_ul.appendChild(n_li);
+      }
+      right.appendChild(n_ul);
+
+      right.children[0].className = "show";
+      li.addEventListener("mouseenter", function(event) {
+        document.querySelector(".show").className = ""
+        document.getElementById("nodes"+event.target.dataset.fh).className = "show";
+        document.querySelector("li.active").className = "";
+        event.target.className = "active";
+      }, false);
+
+    }
+    left.appendChild(ul);
+    left.children[0].children[0].className = "active";
+  } else {
+    var cds = document.querySelectorAll(".countdown");
+    for(var i = 0; i < cds.length; ++i) {
+      var minuteDifference = 60 - date.getUTCMinutes();
+      var timeDifference = parseInt(cds[i].dataset.fh) - (1 - (minuteDifference / 60));
+      cds[i].innerText = Math.floor(remaining(timeDifference));
+      if(cds[i].innerText == "0") {
+        cds[i].innerText = "LESS THAN 1";
+      }
+    }
+  }
+
+  eorzea_time.innerText = formatTime(now);
+  real_time.innerText = formatTime(start) + " UTC";
+  var next =  50 - (Date.now() - start);
+  if(next < 5) {
+    next = 100;
+  }
+  setTimeout(tick, next);
+}, init = function() {
+  for(var key in window.nodes) {
+    var number = parseInt(key);
+    logicdata[number] = {hour: number, nodes: window.nodes[key]};
+  }
+  tick();
+}, sortByTime = function(hours) {
+  var _ = logicdata.concat([]);
+  for(var i = 0; i < hours; ++i) {
+    _.push(_.shift());
+  }
+  return _;
+}
+
+init();

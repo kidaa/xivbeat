@@ -1,0 +1,135 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,600);
+
+body {
+  background: #222;
+  margin: 0;
+  padding: 0;
+  font-family: "Open Sans", "Myriad Pro", "Segoe UI", "Helvetica Neue", "Arial", sans-serif;
+}
+
+.container {
+  width: 800px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  margin-left: -400px;
+}
+
+h1, h4 {
+  padding: 0;
+  margin: 0;
+}
+
+header {
+  text-align: center;
+  color: #eee;
+  padding: 25px 0;
+}
+
+article {
+  position: absolute;
+  top: 115px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #eee;
+  color: #222;
+}
+
+#left {
+  width: 300px;
+  overflow: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #666;
+}
+
+#right {
+  width: 500px;
+  overflow: auto;
+  position: absolute;
+  top: 0;
+  left: 300px;
+  right: 0;
+  bottom: 0;
+}
+
+#left ul {
+  color: #eee;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#left li {
+  padding: 5px;
+  display: block;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+#left li:first-child {
+  font-weight: 600;
+}
+
+#left li.active {
+  background: #222;
+}
+
+#left li span {
+  float: right;
+  font-size: 12px;
+}
+
+#left li span:after {
+  content: " MINS";
+}
+
+#left li span.active:after {
+  content: " MINS REMAINING";
+}
+
+#right ul {
+  display: none;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#right ul.show {
+  display: block;
+}
+
+#right li {
+  margin: 0;
+  padding: 15px;
+  position: relative;
+  cursor: default;
+}
+
+#right li:hover {
+  background: #444;
+  color: #eee;
+}
+
+#right li span {
+  display: block;
+  clear: both;
+}
+
+#right li .class {
+  position: absolute;
+  text-transform: uppercase;
+  top: 5px;
+  right: 5px;
+  font-size: 12px;
+}
+
+#right li .item {
+  font-size: 18px;
+  font-weight: 600;
+}

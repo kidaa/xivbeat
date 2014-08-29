@@ -9,7 +9,7 @@ var path = require("path"),
 
 var TIME = function(app, db, subdomain, root) {
   root.get("/script/data.js", function(req, res) {
-    res.mime("js");
+    res.header("Content-Type", "text/javascript");
     res.end("window.nodes = " + fs.readFileSync(path.resolve(__dirname, "pub", "script", "data.json")));
   });
 
