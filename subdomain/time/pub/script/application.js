@@ -8,20 +8,66 @@ var EZ_TIME_CONSTANT = 20.571428571428574,
     right = document.getElementById("right"),
     settingsRows = document.getElementById("rows"),
     settings = document.getElementById("settings"),
-    blacken = document.getElementById("blacken");
+    blacken = document.getElementById("blacken"),
+    currents = null,
+    daily = null,
+    weekly = null,
+    leve = null,
+    dtimer = document.getElementById("daily"),
+    wtimer = document.getElementById("weekly"),
+    ltimer = document.getElementById("leve");
 
-var getEorzeaTime = function() {
+var DateUTC = function(year, month, day, hour, minute, second) {
+  var d = new Date(0);
+  d.setFullYear(year);
+  d.setUTCMonth(month);
+  d.setUTCDate(day);
+  d.setUTCHours(hour);
+  d.setUTCMinutes(minute);
+  d.setUTCSeconds(second);
+  return d;
+}, regenTimers = function() {
+  currents = new Date();
+  daily = DateUTC(currents.getFullYear(), currents.getUTCMonth(), currents.getUTCDate(), 16, 0, 0).getTime();
+  if(currents.getTime() > daily) {
+    daily = DateUTC(currents.getFullYear(), currents.getUTCMonth(), currents.getUTCDate() + 1, 16, 0, 0).getTime();
+  }
+
+  var distance = currents.getUTCDay();
+  distance -= 1;
+  if(distance < 0) {
+    distance = Math.abs(distance);
+  }
+  weekly = DateUTC(currents.getFullYear(), currents.getUTCMonth(), currents.getUTCDate() + distance, 8, 0, 0).getTime();
+
+  leve = DateUTC(currents.getFullYear(), currents.getUTCMonth(), currents.getUTCDate(), 0, 0, 0).getTime();
+  if(currents.getTime() > leve) {
+    leve = DateUTC(currents.getFullYear(), currents.getUTCMonth(), currents.getUTCDate(), 12, 0, 0).getTime();
+    if(currents.getTime() > leve) {
+      leve = DateUTC(currents.getFullYear(), currents.getUTCMonth(), currents.getUTCDate() + 1, 0, 0, 0).getTime();
+    }
+  }
+}, getEorzeaTime = function() {
   return Math.floor(Date.now() * EZ_TIME_CONSTANT);
-}, formatTime = function(epoch) {
+}, formatTime = function(epoch, days, shmrd) {
   var date = new Date(epoch);
   var h = date.getUTCHours(), m = date.getUTCMinutes();
   var meridiem = "AM";
-  if(h > 11) {
+  if(h > 11 && !shmrd) {
     h -= 12;
     meridiem = "PM";
   }
 
-  return ("0" + h).substr(-2) + ":" + ("0" + m).substr(-2) + ":" + ("0" + date.getUTCSeconds()).substr(-2) + " " + meridiem;
+  if(days && date.getUTCDate() > 0) {
+    h += date.getUTCDate() * 24
+  }
+
+  var str = ("0" + h).substr(-2) + ":" + ("0" + m).substr(-2) + ":" + ("0" + date.getUTCSeconds()).substr(-2);
+
+  if(!shmrd) {
+    str += " " + meridiem;
+  }
+  return str;
 }, remaining = function(futureHours) {
   return new Date(175 * futureHours * 1000).getTime() / 1000 / 60;
 }, calculateHours = function(last, hour) {
@@ -154,6 +200,15 @@ var getEorzeaTime = function() {
 
   eorzea_time.innerText = formatTime(now);
   real_time.innerText = formatTime(start) + " UTC";
+
+  if(daily === null || weekly === null || leve === null ||
+     daily - start < 0 || weekly - start < 0 || leve - start < 0) {
+    regenTimers();
+  }
+
+  dtimer.innerText = formatTime(daily - start, false, true);
+  wtimer.innerText = formatTime(weekly - start, true, true);
+  ltimer.innerText = formatTime(leve - start, false, true);
   var next =  50 - (Date.now() - start);
   if(next < 5) {
     next = 100;
