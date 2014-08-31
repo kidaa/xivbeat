@@ -84,10 +84,11 @@ var DateUTC = function(year, month, day, hour, minute, second) {
 }, playSound = function(se) {
   var se = "/se/"+se+".mp3";
   var a = new Audio();
+  a.addEventListener("canplay", function(){
+    a.play();
+  }, false);
   a.src = se;
   a.volume = 1;
-  a.play();
-  console.log(a);
 }, tick = function() {
   var start = Date.now();
   var now = getEorzeaTime(),
