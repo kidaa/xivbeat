@@ -34,7 +34,7 @@ var DateUTC = function(year, month, day, hour, minute, second) {
   }
 
   var distance = currents.getUTCDay();
-  distance -= 1;
+  distance -= 2;
   if(distance < 0) {
     distance = Math.abs(distance);
   }
@@ -58,7 +58,7 @@ var DateUTC = function(year, month, day, hour, minute, second) {
     meridiem = "PM";
   }
 
-  if(days && date.getUTCDate() > 0) {
+  if(days && date.getUTCDate() > 1) {
     h += date.getUTCDate() * 24
   }
 
