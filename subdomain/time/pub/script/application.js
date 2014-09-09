@@ -123,16 +123,16 @@ var DateUTC = function(year, month, day, hour, minute, second) {
         meridiem = "PM";
       }
 
-      li.innerText = ("0" + hour).substr(-2) + ":00 " + meridiem;
+      li.textContent = ("0" + hour).substr(-2) + ":00 " + meridiem;
 
       var timeDifference = calculateHours(last_hour, n.hour);
       var timeLeft = document.createElement("span");
       timeLeft.dataset.fh = timeDifference;
       var minuteDifference = 60 - date.getUTCMinutes();
       timeDifference -= (1 - (minuteDifference / 60));
-      timeLeft.innerText = Math.floor(remaining(timeDifference));
-      if(timeLeft.innerText == "0") {
-        timeLeft.innerText = "LESS THAN 1";
+      timeLeft.textContent = Math.floor(remaining(timeDifference));
+      if(timeLeft.textContent == "0") {
+        timeLeft.textContent = "LESS THAN 1";
       }
       timeLeft.className = "countdown";
       if(n.hour == last_hour) {
@@ -157,14 +157,14 @@ var DateUTC = function(year, month, day, hour, minute, second) {
         s.className = "slot";
         l.className = "location";
 
-        n_li.className = c.innerText = node.class;
-        it.innerText = node.item;
+        n_li.className = c.textContent = node.class;
+        it.textContent = node.item;
         if("location" in node) {
-          l.innerText = node.location + " (" + node.coordinates[0] + ", " + node.coordinates[1] + ")";
+          l.textContent = node.location + " (" + node.coordinates[0] + ", " + node.coordinates[1] + ")";
         }
 
         if("slot" in node) {
-          s.innerText = "Slot #"+node.slot;
+          s.textContent = "Slot #"+node.slot;
         }
 
         n_li.appendChild(c);
@@ -192,24 +192,24 @@ var DateUTC = function(year, month, day, hour, minute, second) {
     for(var i = 0; i < cds.length; ++i) {
       var minuteDifference = 60 - date.getUTCMinutes();
       var timeDifference = parseInt(cds[i].dataset.fh) - (1 - (minuteDifference / 60));
-      cds[i].innerText = Math.floor(remaining(timeDifference));
-      if(cds[i].innerText == "0") {
-        cds[i].innerText = "LESS THAN 1";
+      cds[i].textContent = Math.floor(remaining(timeDifference));
+      if(cds[i].textContent == "0") {
+        cds[i].textContent = "LESS THAN 1";
       }
     }
   }
 
-  eorzea_time.innerText = formatTime(now);
-  real_time.innerText = formatTime(start) + " UTC";
+  eorzea_time.textContent = formatTime(now);
+  real_time.textContent = formatTime(start) + " UTC";
 
   if(daily === null || weekly === null || leve === null ||
      daily - start < 0 || weekly - start < 0 || leve - start < 0) {
     regenTimers();
   }
 
-  dtimer.innerText = formatTime(daily - start, false, true);
-  wtimer.innerText = formatTime(weekly - start, true, true);
-  ltimer.innerText = formatTime(leve - start, false, true);
+  dtimer.textContent = formatTime(daily - start, false, true);
+  wtimer.textContent = formatTime(weekly - start, true, true);
+  ltimer.textContent = formatTime(leve - start, false, true);
   var next =  50 - (Date.now() - start);
   if(next < 5) {
     next = 100;
@@ -238,11 +238,11 @@ var DateUTC = function(year, month, day, hour, minute, second) {
       rt -= 12;
       meridiem = "PM";
     }
-    rowTime.innerText = ("00" + rt).substr(-2) + ":00 " + meridiem;
+    rowTime.textContent = ("00" + rt).substr(-2) + ":00 " + meridiem;
     row.appendChild(rowTime);
 
     var span1 = document.createElement("span");
-    span1.innerText = " | Sound Effect #";
+    span1.textContent = " | Sound Effect #";
     row.appendChild(span1);
 
     var rowNumber = document.createElement("input");
@@ -257,11 +257,11 @@ var DateUTC = function(year, month, day, hour, minute, second) {
     row.appendChild(rowNumber);
 
     var span2 = document.createElement("span");
-    span2.innerText = " | ";
+    span2.textContent = " | ";
     row.appendChild(span2);
 
     var button = document.createElement("button");
-    button.innerText = "Test";
+    button.textContent = "Test";
     button.id="sebutton"+number;
     row.appendChild(button);
     button.addEventListener("mouseup", function(event) {

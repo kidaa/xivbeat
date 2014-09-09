@@ -60,7 +60,7 @@ var maintenance_do = function() {
     document.getElementById("affected").style.display = "block";
     for(var i = 0; i < maintenance_cache.services.length; ++i) {
       var span = document.createElement("div");
-      span.innerText = maintenance_cache.services[i];
+      span.textContent = maintenance_cache.services[i];
       list.appendChild(span);
     }
   }
@@ -73,15 +73,15 @@ var maintenance_do = function() {
     document.getElementsByTagName("section")[0].style.display =
     document.getElementById("planned-maintenance").style.display = "block";
     if(timeUntil > 86400000) {
-      document.getElementById("timeleft").innerText = "About " + Math.ceil(timeUntil / 86400000) + " day" + (Math.ceil(timeUntil / 86400000) == 1 ? "" : "s");
+      document.getElementById("timeleft").textContent = "About " + Math.ceil(timeUntil / 86400000) + " day" + (Math.ceil(timeUntil / 86400000) == 1 ? "" : "s");
     } else {
-      document.getElementById("timeleft").innerText = padZero(date.getUTCHours()) + ":" + padZero(date.getUTCMinutes()) + ":" + padZero(date.getUTCSeconds());
+      document.getElementById("timeleft").textContent = padZero(date.getUTCHours()) + ":" + padZero(date.getUTCMinutes()) + ":" + padZero(date.getUTCSeconds());
     }
   } else if(timeLeft > 0) {
     var date = new Date(timeLeft);
     document.getElementsByTagName("section")[0].style.display =
     document.getElementById("ongoing-maintenance").style.display = "block";
-    document.getElementById("maintenance").innerText = padZero(date.getUTCHours()) + ":" + padZero(date.getUTCMinutes()) + ":" + padZero(date.getUTCSeconds());
+    document.getElementById("maintenance").textContent = padZero(date.getUTCHours()) + ":" + padZero(date.getUTCMinutes()) + ":" + padZero(date.getUTCSeconds());
   } else {
     document.getElementsByTagName("section")[0].style.display =
     document.getElementById("ongoing-maintenance").style.display =
