@@ -48,7 +48,7 @@ var DateUTC = function(year, month, day, hour, minute, second) {
     }
   }
 }, getEorzeaTime = function() {
-  return Math.floor(Date.now() * EZ_TIME_CONSTANT);
+  return Math.floor((Date.now() - 26127360000000) * EZ_TIME_CONSTANT);
 }, formatTime = function(epoch, days, shmrd) {
   var date = new Date(epoch);
   var h = date.getUTCHours(), m = date.getUTCMinutes();
