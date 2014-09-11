@@ -56,12 +56,34 @@ var maintenance_do = function() {
 
   var list = document.querySelector("#affected #list");
 
-  if(list.children.length == 0) {
+  if(list.children.length == 0 && maintenance_cache.services.length > 0) {
     document.getElementById("affected").style.display = "block";
-    for(var i = 0; i < maintenance_cache.services.length; ++i) {
-      var span = document.createElement("div");
-      span.textContent = maintenance_cache.services[i];
-      list.appendChild(span);
+    var span = document.createElement("div");
+    span.textContent = maintenance_cache.services.shift();
+    list.appendChild(span);
+
+    if(maintenance_cache.services.length > 0) {
+      var additional = document.createElement("div");
+      additional.id = "additional";
+      for(var i = 0; i < maintenance_cache.services.length; ++i) {
+        var span = document.createElement("div");
+        span.textContent = maintenance_cache.services[i];
+        additional.appendChild(span);
+      }
+      list.appendChild(additional);
+      var toggle = document.createElement("div");
+      toggle.id = "toggle";
+      toggle.textContent = "Show more...";
+      toggle.addEventListener("mousedown", function(event) {
+        if(event.target.textContent == "Show more...") {
+          document.getElementById("additional").style.display = "block"
+          event.target.textContent = "Show less..."
+        } else {
+          document.getElementById("additional").style.display = "none"
+          event.target.textContent = "Show more...";
+        }
+      }, false);
+      list.appendChild(toggle);
     }
   }
 

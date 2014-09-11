@@ -216,3 +216,18 @@ section b {
 section, section > div {
   display: none;
 }
+
+#list #additional {
+  display: none;
+}
+
+#list #toggle {
+  background: #555;
+  cursor: pointer;
+  text-align: center;
+}
+
+#list #toggle:hover {
+  background: #eee;
+  color: #222;
+}
