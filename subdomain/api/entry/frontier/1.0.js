@@ -33,6 +33,12 @@ var FRONTIER_10 = function(app, db, router) {
     frontier.getMaintenance(function(err, maintenance) {
       setTimeout(fetchServerMaintenance, 1000 * 58);
       if(err) {
+        cache.set("maintenance.json", {
+          start: 0,
+          end: 0,
+          services: [],
+          error: err.stack
+        });
         return;
       }
 
