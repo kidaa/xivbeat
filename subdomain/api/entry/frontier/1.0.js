@@ -37,7 +37,8 @@ var FRONTIER_10 = function(app, db, router) {
           start: 0,
           end: 0,
           services: [],
-          error: err.stack
+          error: err.stack,
+          id: maintenance || ""
         });
         return;
       }

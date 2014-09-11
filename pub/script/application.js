@@ -85,6 +85,18 @@ var maintenance_do = function() {
       }, false);
       list.appendChild(toggle);
     }
+
+    if(maintenance_cache.id.length) {
+      document.getElementById("planned-maintenance").children[0].children[0].href =
+      document.getElementById("ongoing-maintenance").children[0].children[0].href = "http://eu.finalfantasyxiv.com/lodestone/news/detail/" + maintenance_cache.id;
+      document.getElementById("planned-maintenance").children[0].children[0].textContent =
+      document.getElementById("ongoing-maintenance").children[0].children[0].textContent = "Lodestone";
+    } else {
+      document.getElementById("planned-maintenance").children[0].children[0].href =
+      document.getElementById("ongoing-maintenance").children[0].children[0].href = "";
+      document.getElementById("planned-maintenance").children[0].children[0].textContent =
+      document.getElementById("ongoing-maintenance").children[0].children[0].textContent = "";
+    }
   }
 
   var now = Date.now();
@@ -92,6 +104,7 @@ var maintenance_do = function() {
       timeLeft = maintenance_cache.end - now;
   if(timeUntil > 0) {
     var date = new Date(timeUntil);
+    document.getElementById("ongoing-maintenance").style.display = "none";
     document.getElementsByTagName("section")[0].style.display =
     document.getElementById("planned-maintenance").style.display = "block";
     if(timeUntil > 86400000) {
@@ -101,6 +114,7 @@ var maintenance_do = function() {
     }
   } else if(timeLeft > 0) {
     var date = new Date(timeLeft);
+    document.getElementById("planned-maintenance").style.display = "none";
     document.getElementsByTagName("section")[0].style.display =
     document.getElementById("ongoing-maintenance").style.display = "block";
     document.getElementById("maintenance").textContent = padZero(date.getUTCHours()) + ":" + padZero(date.getUTCMinutes()) + ":" + padZero(date.getUTCSeconds());

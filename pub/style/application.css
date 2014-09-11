@@ -38,11 +38,12 @@ body {
   padding-left: 55px;
 }
 
-.container > header a {
+.container > header a, #maintenance a {
   color: #ffffff;
+  font-weight: normal;
 }
 
-.container > header a.selected {
+.container > header a.selected, #maintenance a:hover {
   text-decoration: none;
   font-weight: bold;
 }
