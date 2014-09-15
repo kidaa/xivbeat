@@ -2,8 +2,7 @@
 //Copyright 2014 Yuki Ahmed
 
 //middleware because subdomain switch.
-var cache = require("../../../../lib/cache.js"),
-    lodestone = require("../../../../lib/lodestone.js"),
+var lodestone = require("../../../../lib/lodestone.js"),
     path = require("path"),
     static = require("serve-static");
 

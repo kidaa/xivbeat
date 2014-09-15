@@ -2,8 +2,7 @@
 //Copyright 2014 Yuki Ahmed
 
 //middleware because subdomain switch.
-var cache = require("../../../../lib/cache.js"),
-    frontier = require("../../../../lib/frontier.js"),
+var frontier = require("../../../../lib/frontier.js"),
     path = require("path"),
     static = require("serve-static");
 

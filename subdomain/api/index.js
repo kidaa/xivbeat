@@ -6,6 +6,8 @@ var path = require("path"),
     static = require("serve-static"),
     Router = require("express").Router;
 
+cache = require("../../lib/cache.js");
+
 var API = function(app, db, subdomain, root) {
   root.use(function(req, res, next) {
     res.header("Access-Control-Allow-Headers", "X-Requested-With");
