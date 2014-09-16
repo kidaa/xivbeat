@@ -117,7 +117,7 @@ var maintenance_do = function() {
     document.getElementById("planned-maintenance").style.display = "none";
     document.getElementsByTagName("section")[0].style.display =
     document.getElementById("ongoing-maintenance").style.display = "block";
-    document.getElementById("maintenance").textContent = padZero(date.getUTCHours()) + ":" + padZero(date.getUTCMinutes()) + ":" + padZero(date.getUTCSeconds());
+    document.getElementById("ongoing-timeleft").textContent = padZero(date.getUTCHours()) + ":" + padZero(date.getUTCMinutes()) + ":" + padZero(date.getUTCSeconds());
   } else {
     document.getElementsByTagName("section")[0].style.display =
     document.getElementById("ongoing-maintenance").style.display =
