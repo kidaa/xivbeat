@@ -2,6 +2,30 @@
   "name": "xivbeat",
   "version": "0.0.0",
   "dependencies": {
+    "easyxml": {
+      "version": "0.0.5",
+      "from": "easyxml@",
+      "resolved": "https://registry.npmjs.org/easyxml/-/easyxml-0.0.5.tgz",
+      "dependencies": {
+        "elementtree": {
+          "version": "0.1.5",
+          "from": "elementtree@0.1.5",
+          "resolved": "https://registry.npmjs.org/elementtree/-/elementtree-0.1.5.tgz",
+          "dependencies": {
+            "sax": {
+              "version": "0.3.5",
+              "from": "sax@0.3.5",
+              "resolved": "https://registry.npmjs.org/sax/-/sax-0.3.5.tgz"
+            }
+          }
+        },
+        "inflect": {
+          "version": "0.3.0",
+          "from": "inflect@0.3.x",
+          "resolved": "https://registry.npmjs.org/inflect/-/inflect-0.3.0.tgz"
+        }
+      }
+    },
     "express": {
       "version": "4.6.1",
       "from": "express@",
