@@ -6,7 +6,7 @@ var frontier = require("../../../../lib/frontier.js"),
     path = require("path"),
     static = require("serve-static");
 
-var FRONTIER_10 = function(app, db, router) {
+var FRONTIER_10 = function(db, router) {
   var fetchServerStatus = function() {
     frontier.getStatus(function(err, status, world, login, lobby) {
       setTimeout(fetchServerStatus, 1000 * 59);
@@ -52,99 +52,59 @@ var FRONTIER_10 = function(app, db, router) {
 
   router.use(static(path.resolve(__dirname, "pub")));
 
-  router.get("/", function(req, res) {
-    return res.end({
-      root: {
-        url: req.protocol + "://" + req.get("host") + "/frontier/1.0/",
-        params: [],
-        expires: 0
-      },
-      list: {
-        url: req.protocol + "://" + req.get("host") + "/frontier/1.0/server_map.json",
-        params: [],
-        expires: 0
-      },
-      list_slim: {
-        url: req.protocol + "://" + req.get("host") + "/frontier/1.0/server_map_linear.json",
-        params: [],
-        expires: 0
-      },
-      server: {
-        url: req.protocol + "://" + req.get("host") + "/frontier/1.0/server.json",
-        params: [],
-        expires: 1000 * 60
-      },
-      server_slim: {
-        url: req.protocol + "://" + req.get("host") + "/frontier/1.0/slim.json",
-        params: [],
-        expires: 1000 * 15
-      },
-      timeseries: {
-        url: req.protocol + "://" + req.get("host") + "/frontier/1.0/timeseries.json",
-        params: ["world", "start", "end"],
-        expires: Number.MAX_VALUE
-      },
-      world: {
-        url: req.protocol + "://" + req.get("host") + "/frontier/1.0/world.json",
-        params: [],
-        expires: 1000 * 60
-      },
-      login: {
-        url: req.protocol + "://" + req.get("host") + "/frontier/1.0/login.json",
-        params: [],
-        expires: 1000 * 60
-      },
-      lobby: {
-        url: req.protocol + "://" + req.get("host") + "/frontier/1.0/lobby.json",
-        params: ["lang"],
-        expires: 1000 * 60
-      },
-      headlines: {
-        url: req.protocol + "://" + req.get("host") + "/frontier/1.0/headlines.json",
-        params: ["lang"],
-        expires: 1000 * 60 * 60
-      },
-      article: {
-        url: req.protocol + "://" + req.get("host") + "/frontier/1.0/article.json",
-        params: ["id"],
-        expires: 1000 * 60 * 60
-      },
-      maintenance: {
-        url: req.protocol + "://" + req.get("host") + "/frontier/1.0/maintenance.json",
-        params: [],
-        expires: 1000 * 60
-      }
-    });
+  router.static({
+    endpoint: "server_map.json",
+    name: "list",
+    expires: -1
   });
 
-  router.get("/headlines.json", function(req, res) {
+  router.static({
+    endpoint: "server_map_linear.json",
+    name: "list_slim",
+    expires: -1
+  });
+
+  router.get({
+    endpoint: "headlines",
+    expires: 3600000,
+    params: ["lang"]
+  }, function(req, res) {
     var ch = cache.get("headlines.json#" + (req.query.lang || "en-us"));
     if(ch !== null) {
-      return res.end(ch);
+      return res.end(ch, cache.getRemaining("headlines.json#" + (req.query.lang || "en-us")));
     }
 
     frontier.getHeadlines(req.query.lang || "en-us", function(err, headlines) {
       if(err) {
-        return res.end({error: err});
+        return res.end({error: err}, 1000);
       }
 
       cache.set("headlines.json#" + (req.query.lang || "en-us"), headlines, 1000 * 60 * 60);
-      return res.end(headlines);
+      return res.end(headlines, 1000 * 60 * 60);
     });
   });
 
-  router.get("/server.json", function(req, res) {
+  router.get({
+    endpoint: "server",
+    expires: 60000
+  }, function(req, res) {
     var ch = cache.get("status.json");
-    res.end(ch || {error: "no cached data"});
+    res.end(ch || {error: "no cached data"}, 10000);
   });
 
-  router.get("/slim.json", function(req, res) {
+  router.get({
+    endpoint: "slim",
+    expires: 15000
+  }, function(req, res) {
     var ch = cache.get("slim.json");
-    res.end(ch || {error: "no cached data"});
+    res.end(ch || {error: "no cached data"}, 1000);
   })
 
-  router.get("/timeseries.json", function(req, res) {
-    return res.end({});
+  router.get({
+    endpoint: "timeseries",
+    expires: Number.MAX_VALUE
+  }, function(req, res) {
+    return res.end({}, 13e+11);
 
     if(req.query.world === undefined || req.query.world.length == 0) {
       return res.end({error: "Invalid world"});
@@ -153,22 +113,35 @@ var FRONTIER_10 = function(app, db, router) {
     var world = res.query.world.toLowerCase();
   })
 
-  router.get("/world.json", function(req, res) {
+  router.get({
+    endpoint: "world",
+    expires: 60000
+  }, function(req, res) {
     var ch = cache.get("world.json");
-    res.end(ch || {error: "no cached data"});
+    res.end(ch || {error: "no cached data"}, 10000);
   });
 
-  router.get("/login.json", function(req, res) {
+  router.get({
+    endpoint: "login",
+    expires: 60000
+  }, function(req, res) {
     var ch = cache.get("login.json");
-    res.end(ch || {});
+    res.end(ch || {error: "no cached data"}, 10000);
   });
 
-  router.get("/lobby.json", function(req, res) {
+  router.get({
+    endpoint: "lobby",
+    expires: 60000
+  }, function(req, res) {
     var ch = cache.get("lobby.json");
-    res.end(ch || {});
+    res.end(ch || {error: "no cached data"}, 10000);
   });
 
-  router.get("/article.json", function(req, res) {
+  router.get({
+    endpoint: "article",
+    expires: 3600000,
+    params: ["id"]
+  }, function(req, res) {
     if(req.query.id === undefined || req.query.id.length == 0) {
       return res.end({error: "Invalid ID"});
     }
@@ -192,9 +165,12 @@ var FRONTIER_10 = function(app, db, router) {
     });
   });
 
-  router.get("/maintenance.json", function(req, res) {
+  router.get({
+    endpoint: "maintenance",
+    expires: 60000
+  }, function(req, res) {
     var ch = cache.get("maintenance.json");
-    return res.end(ch || {});
+    return res.end(ch || {error: "no cached data"}, 10000);
   });
 
   return router;

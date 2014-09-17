@@ -4,42 +4,30 @@
 //middleware because subdomain switch.
 var aetheryte = require("../../../../lib/aetheryte.js");
 
-var AETHERYTE_10 = function(app, db, router) {
+var AETHERYTE_10 = function(db, router) {
 
-  router.get("/", function(req, res) {
-    return res.end({
-      root: {
-        url: req.protocol + "://" + req.get("host") + "/aetheryte/1.0/",
-        params: [],
-        expires: 0
-      },
-      time: {
-        url: req.protocol + "://" + req.get("host") + "/aetheryte/1.0/time.json",
-        params: [],
-        expires: 1
-      },
-      epoch: {
-        url: req.protocol + "://" + req.get("host") + "/aetheryte/1.0/epoch.json",
-        params: [],
-        expires: 1
-      }
-    });
-  });
-
-  router.get("/time.:format", function(req, res, next) {
+  router.get({
+    endpoint: "time",
+    expires: 1
+  }, function(req, res, next) {
+    console.log(req.params);
     var epoch = aetheryte.formatTime(aetheryte.getEorzeaTime());
-    if(req.params.format == "txt") {
-      res.end(epoch.string);
+    if(req.params._type == "txt") {
+      res.end(epoch.string, 0);
     } else {
-      res.end(epoch);
+      res.end(epoch, 0);
     }
   });
-  router.get("/epoch.:format", function(req, res, next) {
+
+  router.get({
+    endpoint: "epoch",
+    expires: 1
+  }, function(req, res, next) {
     var epoch = aetheryte.getEorzeaTime();
-    if(req.params.format == "txt") {
-      res.end(epoch.toString());
+    if(req.params._type == "txt") {
+      res.end(epoch.toString(), 0);
     } else {
-      res.end({epoch: epoch});
+      res.end({epoch: epoch}, 0);
     }
   });
 

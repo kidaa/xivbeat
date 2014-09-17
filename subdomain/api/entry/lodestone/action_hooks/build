@@ -1,0 +1,5 @@
+#!/bin/bash
+echo "-----> Running: go get github.com/go-sql-driver/mysql"
+go get github.com/go-sql-driver/mysql
+echo "-----> Running: go get github.com/zenazn/goji"
+go get github.com/zenazn/goji

@@ -6,31 +6,14 @@ var lodestone = require("../../../../lib/lodestone.js"),
     path = require("path"),
     static = require("serve-static");
 
-var LODESTONE_10 = function(app, db, router) {
+var LODESTONE_10 = function(db, router) {
 
   router.use(static(path.resolve(__dirname, "pub")));
 
-  router.get("/", function(req, res) {
-    return res.end({
-      root: {
-        url: req.protocol + "://" + req.get("host") + "/lodestone/1.0/",
-        params: [],
-        expires: 0
-      },
-      character: {
-        url: req.protocol + "://" + req.get("host") + "/lodestone/1.0/character/:id.json",
-        params: ["no_icons"],
-        expires: 1000 * 60 * 60 * 24
-      },
-      freeCompany: {
-        url: req.protocol + "://" + req.get("host") + "/lodestone/1.0/company/:id.json",
-        params: [],
-        expires: 1000 * 60 * 60 * 24
-      }
-    });
-  });
-
-  router.get("/character/:id.json", function(req, res, next) {
+  router.get({
+    endpoint: "character/:id",
+    expires: 1000 * 60 * 60 * 24
+  }, function(req, res, next) {
     var id = req.params.id;
     var ch = cache.get("CHARACTER#"+id+("no_icons" in req.query ? "NO_ICONS" : "ICONS"));
     if(ch === null) {
@@ -44,15 +27,18 @@ var LODESTONE_10 = function(app, db, router) {
         } else {
           result.expires = Date.now() + 1000 * 60 * 60 * 24;
           cache.set("CHARACTER#"+id+("no_icons" in req.query ? "NO_ICONS" : "ICONS"), result, 1000 * 60 * 60 * 24);
-          res.end(result);
+          res.end(result, 1000 * 60 * 60 * 24);
         }
       });
     } else {
-      res.end(ch || {});
+      res.end(ch || {}, cache.getRemaining("CHARACTER#"+id+("no_icons" in req.query ? "NO_ICONS" : "ICONS")));
     }
   });
 
-  router.get("/company/:id.json", function(req, res, next) {
+  router.get({
+    endpoint: "company/:id",
+    expires: 1000 * 60 * 60 * 24
+  }, function(req, res, next) {
     var id = req.params.id;
     var ch = cache.get("FC#"+id);
     if(ch === null) {
@@ -66,11 +52,11 @@ var LODESTONE_10 = function(app, db, router) {
         } else {
           result.expires = Date.now() + 1000 * 60 * 60 * 24;
           cache.set("FC#"+id, result, 1000 * 60 * 60 * 24);
-          res.end(result);
+          res.end(result, 1000 * 60 * 60 * 24);
         }
       });
     } else {
-      res.end(ch || {});
+      res.end(ch || {}, cache.getRemaining("FC#"+id));
     }
   });
 
