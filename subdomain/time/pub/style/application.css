@@ -1,5 +1,12 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,600);
 
+/* http://www.fontsaddict.com/font/eurostar-regular-extended.html - first "eurostar regular extended webfont" google result, message if copyright infrigement */
+@font-face {
+  font-family: 'Eurostar';
+  font-weight: normal;
+  src: local('Eurostar'), url('/font/eurostar-regular-extended.ttf');
+}
+
 body {
   background: #222;
   margin: 0;
@@ -230,4 +237,8 @@ article {
 
 #cog:before {
   content: "\E055";
+}
+
+#real_time, #eorzea_time {
+  font-family: "Eurostar", "Open Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
 }

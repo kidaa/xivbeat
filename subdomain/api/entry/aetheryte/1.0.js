@@ -10,7 +10,6 @@ var AETHERYTE_10 = function(db, router) {
     endpoint: "time",
     expires: 1
   }, function(req, res, next) {
-    console.log(req.params);
     var epoch = aetheryte.formatTime(aetheryte.getEorzeaTime());
     if(req.params._type == "txt") {
       res.end(epoch.string, 0);

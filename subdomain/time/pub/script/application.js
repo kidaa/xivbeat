@@ -28,9 +28,9 @@ var DateUTC = function(year, month, day, hour, minute, second) {
   return d;
 }, regenTimers = function() {
   currents = new Date();
-  daily = DateUTC(currents.getFullYear(), currents.getUTCMonth(), currents.getUTCDate(), 16, 0, 0).getTime();
+  daily = DateUTC(currents.getFullYear(), currents.getUTCMonth(), currents.getUTCDate(), 15, 0, 0).getTime();
   if(currents.getTime() > daily) {
-    daily = DateUTC(currents.getFullYear(), currents.getUTCMonth(), currents.getUTCDate() + 1, 16, 0, 0).getTime();
+    daily = DateUTC(currents.getFullYear(), currents.getUTCMonth(), currents.getUTCDate() + 1, 15, 0, 0).getTime();
   }
 
   var distance = currents.getUTCDay();
