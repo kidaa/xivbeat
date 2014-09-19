@@ -36,7 +36,7 @@ var AETHERYTE_10 = function(db, router) {
   }, function(req, res, next) {
     var ace = aetheryte.getEorzeaTimeAce();
     if(req.params._type == "txt") {
-      res.end(epoch.string, 0);
+      res.end(ace.string, 0);
     } else {
       res.end(ace, 0);
     }
@@ -60,7 +60,7 @@ var AETHERYTE_10 = function(db, router) {
   }, function(req, res, next) {
     var element = aetheryte.getElement();
     if(req.params._type == "txt") {
-      res.end(element.hour + (element.astral ? " astral" : " umbral"), 0);
+      res.end((element.astral ? "astral" : "umbral") + " " + element.hour, 0);
     } else {
       res.end(element, 0);
     }
