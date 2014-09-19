@@ -248,3 +248,42 @@ article {
 #real_time, #eorzea_time {
   font-family: "Eurostar", "Open Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
 }
+
+#eorzea_time sup {
+  height: 19px;
+  display: inline-block;
+  line-height: 19px;
+}
+
+.phase {
+  display: inline-block;
+  margin-left: 2px;
+  -moz-border-radius: 30px;
+  -webkit-border-radius: 30px;
+  -ms-border-radius: 30px;
+  border-radius: 30px;
+}
+
+.phase.night img:nth-child(1) {
+  display: none;
+}
+
+.phase.night:hover img:nth-child(2) {
+  display: none;
+}
+
+.phase.night:hover img:nth-child(1) {
+  display: block;
+}
+
+.phase.day img:nth-child(2) {
+  display: none;
+}
+
+.phase.day:hover img:nth-child(2) {
+  display: block;
+}
+
+.phase.day:hover img:nth-child(1) {
+  display: none;
+}

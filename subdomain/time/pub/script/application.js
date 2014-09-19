@@ -2,7 +2,7 @@ var EZ_TIME_CONSTANT = 20.571428571428574,
     logicdata = new Array(24),
     last_hour = -1,
     data = undefined,
-    eorzea_time = document.getElementById("eorzea_time"),
+    eorzea_time = document.getElementById("eorzea_time").children[1],
     real_time = document.getElementById("real_time"),
     left = document.getElementById("left"),
     right = document.getElementById("right"),
@@ -15,10 +15,12 @@ var EZ_TIME_CONSTANT = 20.571428571428574,
     leve = null,
     dtimer = document.getElementById("daily"),
     wtimer = document.getElementById("weekly"),
-    ltimer = document.getElementById("leve");
+    ltimer = document.getElementById("leve"),
+    sup = document.getElementById("eorzea_time").children[0],
+    moonel = document.getElementById("eorzea_time").children[2];
 
 var DateUTC = function(year, month, day, hour, minute, second) {
-  var d = new Date(0);
+  var d = new Date();
   d.setFullYear(year);
   d.setUTCMonth(month);
   d.setUTCDate(day);
@@ -187,6 +189,21 @@ var DateUTC = function(year, month, day, hour, minute, second) {
     }
     left.appendChild(ul);
     left.children[0].children[0].className = "active";
+
+    var ace = Aetheryte.getEorzeaTimeAce(),
+        element = Aetheryte.getElement(ace),
+        moon = "moon_"+["", "0", "-25", "-50", "-75", "100", "+75", "+50", "+25"][Aetheryte.getMoonPhase(ace).phase]+".png",
+        nightday = "night";
+    if(last_hour >= 6 && last_hour < 18) {
+      moon_day = "day";
+    }
+
+    moonel.className = "phase " + nightday;
+    moonel.children[1].src = "/cycle/"+moon;
+    moonel.children[0].title = moonel.children[1].title = Aetheryte.getMoonPhase(ace).moon;
+
+    sup.children[0].src = "/cycle/"+element.hour+".png";
+    sup.children[0].title = (element.astral ? "astral" : "umbral") + " " + element.hour;
   } else {
     var cds = document.querySelectorAll(".countdown");
     for(var i = 0; i < cds.length; ++i) {
