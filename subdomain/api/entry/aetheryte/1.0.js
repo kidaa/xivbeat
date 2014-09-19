@@ -30,6 +30,55 @@ var AETHERYTE_10 = function(db, router) {
     }
   });
 
+  router.get({
+    endpoint: "ace",
+    expires: 1
+  }, function(req, res, next) {
+    var ace = aetheryte.getEorzeaTimeAce();
+    if(req.params._type == "txt") {
+      res.end(epoch.string, 0);
+    } else {
+      res.end(ace, 0);
+    }
+  });
+
+  router.get({
+    endpoint: "acepoch",
+    expires: 1
+  }, function(req, res, next) {
+    var epoch = aetheryte.getEorzeaTimeAce().epoch;
+    if(req.params._type == "txt") {
+      res.end(epoch.toString(), 0);
+    } else {
+      res.end({epoch: epoch}, 0);
+    }
+  });
+
+  router.get({
+    endpoint: "element",
+    expires: 1
+  }, function(req, res, next) {
+    var element = aetheryte.getElement();
+    if(req.params._type == "txt") {
+      res.end(element.hour + (element.astral ? " astral" : " umbral"), 0);
+    } else {
+      res.end(element, 0);
+    }
+  });
+
+
+  router.get({
+    endpoint: "moon",
+    expires: 1
+  }, function(req, res, next) {
+    var moon = aetheryte.getMoonPhase();
+    if(req.params._type == "txt") {
+      res.end(moon.moon, 0);
+    } else {
+      res.end(moon, 0);
+    }
+  });
+
   return router;
 }
 
