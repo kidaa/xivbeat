@@ -66,7 +66,6 @@ var AETHERYTE_10 = function(db, router) {
     }
   });
 
-
   router.get({
     endpoint: "moon",
     expires: 1
