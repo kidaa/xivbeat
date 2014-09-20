@@ -194,7 +194,7 @@ var DateUTC = function(year, month, day, hour, minute, second) {
         element = Aetheryte.getElement(ace),
         moon = "moon_"+["0", "-25", "-50", "-75", "100", "+75", "+50", "+25"][Aetheryte.getMoonPhase(ace).phase]+".png",
         nightday = "night";
-    if(last_hour >= 6 && last_hour < 18) {
+    if(ace.hour >= 6 && ace.hour < 18) {
       moon_day = "day";
     }
 
