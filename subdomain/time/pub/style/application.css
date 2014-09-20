@@ -258,6 +258,11 @@ article {
 .phase {
   display: inline-block;
   margin-left: 2px;
+  vertical-align: -3px;
+  line-height: 0px;
+}
+
+.phase, .phase img {
   -moz-border-radius: 30px;
   -webkit-border-radius: 30px;
   -ms-border-radius: 30px;

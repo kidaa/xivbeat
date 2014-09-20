@@ -13,6 +13,11 @@ var TIME = function(app, db, subdomain, root) {
     res.end("window.nodes = " + fs.readFileSync(path.resolve(__dirname, "pub", "script", "data.json")));
   });
 
+  root.get("/script/aetheryte.js", function(req, res) {
+    res.header("Content-Type", "text/javascript");
+    res.end(fs.readFileSync(path.resolve(__dirname, "..", "..", "lib", "aetheryte.js")));
+  });
+
   root.use(static(path.resolve(__dirname, "pub")));
 
   app.use(subdomain("time", root));
