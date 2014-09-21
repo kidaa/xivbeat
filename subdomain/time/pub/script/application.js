@@ -30,25 +30,10 @@ var DateUTC = function(year, month, day, hour, minute, second) {
   return d;
 }, regenTimers = function() {
   currents = new Date();
-  daily = DateUTC(currents.getFullYear(), currents.getUTCMonth(), currents.getUTCDate(), 15, 0, 0).getTime();
-  if(currents.getTime() > daily) {
-    daily = DateUTC(currents.getFullYear(), currents.getUTCMonth(), currents.getUTCDate() + 1, 15, 0, 0).getTime();
-  }
 
-  var distance = currents.getUTCDay();
-  distance -= 2;
-  if(distance < 0) {
-    distance = Math.abs(distance);
-  }
-  weekly = DateUTC(currents.getFullYear(), currents.getUTCMonth(), currents.getUTCDate() + distance, 8, 0, 0).getTime();
-
-  leve = DateUTC(currents.getFullYear(), currents.getUTCMonth(), currents.getUTCDate(), 0, 0, 0).getTime();
-  if(currents.getTime() > leve) {
-    leve = DateUTC(currents.getFullYear(), currents.getUTCMonth(), currents.getUTCDate(), 12, 0, 0).getTime();
-    if(currents.getTime() > leve) {
-      leve = DateUTC(currents.getFullYear(), currents.getUTCMonth(), currents.getUTCDate() + 1, 0, 0, 0).getTime();
-    }
-  }
+  daily = (Math.floor((currents - 54000000) / 86400000) + 1) * 86400000 + 54000000;
+  weekly = (Math.floor((currents - 460800000) / 604800000) + 1) * 604800000 + 460800000;
+  leve = (Math.floor((currents - 43200000) / 86400000) + 1) * 86400000 + 43200000;
 }, getEorzeaTime = function() {
   return Math.floor((Date.now() - 26127360000000) * EZ_TIME_CONSTANT);
 }, formatTime = function(epoch, days, shmrd) {
@@ -61,7 +46,7 @@ var DateUTC = function(year, month, day, hour, minute, second) {
   }
 
   if(days && date.getUTCDate() > 1) {
-    h += date.getUTCDate() * 24
+    h += (date.getUTCDate() - 1) * 24
   }
 
   var str = ("0" + h).substr(-2) + ":" + ("0" + m).substr(-2) + ":" + ("0" + date.getUTCSeconds()).substr(-2);
