@@ -19,18 +19,8 @@ var EZ_TIME_CONSTANT = 20.571428571428574,
     sup = document.getElementById("eorzea_time").children[0],
     moonel = document.getElementById("eorzea_time").children[2];
 
-var DateUTC = function(year, month, day, hour, minute, second) {
-  var d = new Date();
-  d.setFullYear(year);
-  d.setUTCMonth(month);
-  d.setUTCDate(day);
-  d.setUTCHours(hour);
-  d.setUTCMinutes(minute);
-  d.setUTCSeconds(second);
-  return d;
-}, regenTimers = function() {
-  currents = new Date();
-
+var regenTimers = function() {
+  currents = Date.now();
   daily = (Math.floor((currents - 54000000) / 86400000) + 1) * 86400000 + 54000000;
   weekly = (Math.floor((currents - 460800000) / 604800000) + 1) * 604800000 + 460800000;
   leve = (Math.floor((currents - 43200000) / 86400000) + 1) * 86400000 + 43200000;
@@ -197,6 +187,12 @@ var DateUTC = function(year, month, day, hour, minute, second) {
       cds[i].textContent = Math.floor(remaining(timeDifference));
       if(cds[i].textContent == "0") {
         cds[i].textContent = "LESS THAN 1";
+      }
+
+      if(["0", "1"].indexOf(cds[i].textContent) > -1) {
+        cds[i].classList.add("single");
+      } else {
+        cds[i].classList.remove("single");
       }
     }
   }

@@ -106,6 +106,14 @@ article {
   content: " MINS REMAINING";
 }
 
+#left li span.single:after {
+  content: " MIN";
+}
+
+#left li span.single.active:after {
+  content: " MIN REMAINING";
+}
+
 #right ul {
   display: none;
   list-style: none;
