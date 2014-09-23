@@ -34,7 +34,7 @@
       var set = data[i];
 
       var M = set.m == m,
-          D = (set.d == d) || (set.affinity ? (d == 7) : (d == 8)),
+          D = (set.d == d) || (set.affinity ? (d == 8) : (d == 7)),
           E = set.h[0] == e || set.h[1] == e,
           U = set.h[0] == u || set.h[1] == u,
           J = set.h[0] == j || set.h[1] == j;
