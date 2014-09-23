@@ -26,17 +26,17 @@
 
     var d = (ace.d - 1) % 8 + 1,
         m = ace.M,
-        e = ace.h % 12,
-        u = new Date(start).getUTCHours() % 12,
-        j = (u + 9) % 12;
+        e = parseInt(ace.h / 2),
+        u = parseInt(new Date(start).getUTCHours() / 2),
+        j = parseInt(((u + 9) % 24) / 2);
     for(var i = 0; i < data.length; ++i) {
       var set = data[i];
 
       var M = set.m == m,
           D = (set.d == d) || (set.affinity ? (set.d == 7) : (set.d == 8)),
-          E = set.h == e,
-          U = set.h == u,
-          J = set.h == j;
+          E = set.h[0] == e || set.h[1] == e,
+          U = set.h[0] == u || set.h[1] == u,
+          J = set.h[0] == j || set.h[1] == j;
 
       var s = set.row.children[1].children[0].children;
       s[0].className = M ? "active" : "";
@@ -60,6 +60,15 @@
       if(window.localStorage[data[i].row.id] === "true") {
         data[i].row.classList.add("invert");
       }
+
+      var h = data[i].h;
+      data[i].h = [h];
+      if(h % 2) {
+        h--;
+      } else {
+        h++;
+      }
+      data[i].h.push(h);
     }
 
     var rows = workspace.children;
