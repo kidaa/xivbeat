@@ -138,3 +138,12 @@ li.active {
 .row.invert:not(:nth-child(1)) * {
   text-decoration: line-through;
 }
+
+footer {
+  font-size: 14px;
+  text-align: center;
+}
+
+footer a {
+  color: #eee;
+}

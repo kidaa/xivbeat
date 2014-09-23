@@ -11,6 +11,14 @@ body {
   font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
+footer {
+  font-size: 14px;
+}
+
+footer a {
+  color: #222;
+}
+
 .container {
   max-width: 930px;
   padding: 15px;

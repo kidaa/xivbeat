@@ -3,6 +3,7 @@
 (function(data, window, undefined) {
   var workspace = document.getElementById("workspace"),
       time = document.getElementById("time"),
+      footer = document.getElementsByTagName("footer")[0],
       time_ez = time.children[0],
       time_lo = time.children[1];
   var render = function(template, object) {
@@ -33,7 +34,7 @@
       var set = data[i];
 
       var M = set.m == m,
-          D = (set.d == d) || (set.affinity ? (set.d == 7) : (set.d == 8)),
+          D = (set.d == d) || (set.affinity ? (d == 7) : (d == 8)),
           E = set.h[0] == e || set.h[1] == e,
           U = set.h[0] == u || set.h[1] == u,
           J = set.h[0] == j || set.h[1] == j;
@@ -70,6 +71,7 @@
       }
       data[i].h.push(h);
     }
+    workspace.appendChild(footer);
 
     var rows = workspace.children;
     for(var i = 1; i < rows.length; ++i) {

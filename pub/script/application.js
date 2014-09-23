@@ -13,6 +13,7 @@ var GET = function(url, callback) {
   xhr.send();
 };
 
+
 var domain = location.host.split(".").splice(-2)[0],
     tld = location.host.split(".").splice(-1)[0];
 
@@ -143,6 +144,7 @@ var load =  function() {
     metadata = 1;
     return;
   }
+  var footer = document.getElementsByTagName("footer")[0];
   var status = document.getElementById("status");
   for(var i = 0; i < metadata.order.length; ++i) {
     var article = document.createElement("article");
@@ -169,6 +171,7 @@ var load =  function() {
     }
     status.appendChild(article);
   }
+  status.appendChild(footer);
   maintenance();
   check();
 };

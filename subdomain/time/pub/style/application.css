@@ -24,9 +24,26 @@ body {
   width: 800px;
   position: absolute;
   top: 0;
-  bottom: 0;
+  bottom: 40px;
   left: 50%;
   margin-left: -400px;
+}
+
+footer {
+  position: absolute;
+  text-align: center;
+  bottom: 0;
+  width: 800px;
+  height: 40px;
+  margin-left: -400px;
+  left: 50%;
+  color: #222;
+  background: #eee;
+  font-size: 14px;
+}
+
+footer a {
+  color: #222;
 }
 
 h1, h4 {
