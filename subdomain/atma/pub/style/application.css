@@ -1,0 +1,140 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,600);
+
+html, body {
+  font-size: 14px;
+  margin: 0;
+  padding: 0;
+  font-family: "Open Sans", "Myriad Pro", "Segoe UI", "Helvetica Neue", "Arial", sans-serif;
+}
+
+#container {
+  margin: 0 auto;
+  width: 900px;
+}
+
+header {
+  padding: 15px 0;
+  text-align: center;
+}
+
+#time {
+  font-size: 2em;
+}
+
+#time span {
+  display: block;
+}
+
+#time small {
+  font-size: 0.5em;
+}
+
+.info {
+  font-size: 12px;
+}
+
+article {
+  font-size: 0;
+}
+
+.row {
+  width: 100%;
+  font-size: 16px;
+  background: #222;
+  color: #eee;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.row:nth-child(1) {
+  cursor: default;
+}
+
+.row:after {
+  content: ".";
+  font-size: 0;
+  display: block;
+  clear: both;
+  visibility: hidden;
+  line-height: 0;
+  height: 0;
+}
+
+html[xmlns] .row {
+    display: block;
+}
+
+* html .row {
+    height: 1%;
+}
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  width: 15px;
+  height: 17px;
+  padding: 6px 0 7px 0;
+  margin: 0 2px;
+  float: left;
+  text-align: center;
+  font-size: 12px;
+}
+
+li:last-child {
+  margin-right: 0;
+}
+
+.row li {
+  background: #444;
+}
+
+li.active {
+  background: #eee !important;
+}
+
+.left {
+  width: 800px;
+}
+
+.right {
+  width: 93px;
+}
+
+.left div {
+  width: 100%;
+}
+
+.left span:not(:nth-child(1)) {
+  display: inline-block;
+  padding: 4px 0;
+}
+
+.left span:last-child {
+  float: right;
+}
+
+.left span:nth-child(1) {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.row.invert:not(:nth-child(1)) {
+  color: #aaa;
+  background: #eee;
+}
+
+.row.invert:not(:nth-child(1)) * {
+  text-decoration: line-through;
+}

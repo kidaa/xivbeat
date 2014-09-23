@@ -11,22 +11,22 @@ app.set("view engine", "html");
 app.set("views", "./view");
 var db = null;
 
-var params = {api: true, time: true, pf: true, main: true};
+var params = {api: true, time: true, pf: true, main: true, rtma: true};
 
 if(process.argv.length > 2) {
   for(var key in params) {
     params[key] = false;
   }
-}
 
-for(var i = 1; i < process.argv.length; ++i) {
-  var arg = process.argv[i];
+  for(var i = 1; i < process.argv.length; ++i) {
+    var arg = process.argv[i];
 
-  for(var key in params) {
-    var l = key[0];
-    if(arg == "--" + key || arg == "-" + l) {
-      params[key] = true;
-      console.log(key, "enabled");
+    for(var key in params) {
+      var l = key[0];
+      if(arg == "--" + key || arg == "-" + l) {
+        params[key] = true;
+        console.log(key, "enabled");
+      }
     }
   }
 }
@@ -39,6 +39,9 @@ if(params.time === true) {
 }
 if(params.pf === true) {
   require("./subdomain/pf/")(app, db, subdomain, express.Router());
+}
+if(params.rtma === true) {
+  require("./subdomain/atma/")(app, db, subdomain, express.Router());
 }
 if(params.main === true) {
   require("./route/index.js")(app, db, express.Router());

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>X|VAtma</title>
+    <link rel="stylesheet" href="/style/application.css"/>
+  </head>
+  <body>
+    <div id="container">
+      <header>
+        <div id="time">
+          <span>01:23:45 PM</span>
+          <small class="local">01:24:45 AM UTC</small>
+        </div>
+        <div class="info">
+          <b>M</b> = Elemental Month in Eorzea, <b>D</b> = Elemental Day in Eorzea, <b>E</b> = Elemental Hour in Eorzea, <b>U</b> = Elemental Hour in UTC/GMT, <b>J</b> = Elemental Hour in JST<br/>
+          Active = White Stripe - Click the row to cross it out.
+        </div>
+      </header>
+      <article id="workspace">
+        <div class="row">
+          <div class="left">
+            <span><img src="/cycle/ice.png" style="opacity: 0"/></span>
+            <span>Atma</span>
+            <span>Location</span>
+          </div>
+          <div class="right">
+            <ul>
+              <li class="m">M</li>
+              <li class="d">D</li>
+              <li class="e">E</li>
+              <li class="u">U</li>
+              <li class="j">J</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+    </div>
+    <script type="text/plain" id="row-template">
+<div class="row" id="{{element}}{{m}}">
+  <div class="left">
+    <span><img src="/cycle/{{element}}.png" alt="{{element}}"/></span>
+    <span>Atma of the {{atma}}</span>
+    <span>{{location}}</span>
+  </div>
+  <div class="right">
+    <ul>
+      <li class="m"></li>
+      <li class="d"></li>
+      <li class="e"></li>
+      <li class="u"></li>
+      <li class="j"></li>
+    </ul>
+  </div>
+</div>
+    </script>
+    <script src="/script/data.js"></script>
+    <script src="/script/aetheryte.js"></script>
+    <script src="/script/application.js"></script>
+  </body>
+</html>

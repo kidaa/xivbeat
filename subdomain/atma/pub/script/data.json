@@ -1,0 +1,99 @@
+[
+  {
+    "atma": "Goat",
+    "m": 1,
+    "d": 5,
+    "h": 0,
+    "affinity": 1,
+    "location": "East Shroud",
+    "element": "ice"
+  }, {
+    "atma": "Water Bearer",
+    "m": 2,
+    "d": 5,
+    "h": 1,
+    "affinity": 1,
+    "location": "Upper La Noscea",
+    "element": "ice"
+  }, {
+    "atma": "Fish",
+    "m": 3,
+    "d": 6,
+    "h": 2,
+    "affinity": 1,
+    "location": "Lower La Noscea",
+    "element": "water"
+  }, {
+    "atma": "Ram",
+    "m": 4,
+    "d": 6,
+    "h": 3,
+    "affinity": 1,
+    "location": "Middle La Noscea",
+    "element": "water"
+  }, {
+    "atma": "Bull",
+    "m": 5,
+    "d": 1,
+    "h": 4,
+    "affinity": 0,
+    "location": "Eastern Thanalan",
+    "element": "wind"
+  }, {
+    "atma": "Twins",
+    "m": 6,
+    "d": 1,
+    "h": 5,
+    "affinity": 0,
+    "location": "Western Thanalan",
+    "element": "wind"
+  }, {
+    "atma": "Crab",
+    "m": 7,
+    "d": 2,
+    "h": 6,
+    "affinity": 0,
+    "location": "Western La Noscea",
+    "element": "thunder"
+  }, {
+    "atma": "Lion",
+    "m": 8,
+    "d": 2,
+    "h": 7,
+    "affinity": 0,
+    "location": "Outer La Noscea",
+    "element": "thunder"
+  }, {
+    "atma": "Maiden",
+    "m": 9,
+    "d": 3,
+    "h": 8,
+    "affinity": 0,
+    "location": "Central Shroud",
+    "element": "fire"
+  }, {
+    "atma": "Scales",
+    "m": 10,
+    "d": 3,
+    "h": 9,
+    "affinity": 0,
+    "location": "Central Thanalan",
+    "element": "fire"
+  }, {
+    "atma": "Scorpion",
+    "m": 11,
+    "d": 4,
+    "h": 10,
+    "affinity": 1,
+    "location": "Southern Thanalan",
+    "element": "earth"
+  }, {
+    "atma": "Twins",
+    "m": 12,
+    "d": 4,
+    "h": 11,
+    "affinity": 1,
+    "location": "North Shroud",
+    "element": "earth"
+  }
+]
