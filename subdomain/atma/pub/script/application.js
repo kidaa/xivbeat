@@ -27,7 +27,7 @@
 
     var d = (ace.d - 1) % 8 + 1,
         m = ace.M,
-        e = ace.h % 12,
+        e = parseInt(ace.h/2),
         u = new Date(start).getUTCHours() % 12,
         j = ((u + 9) % 24) % 12;
     for(var i = 0; i < data.length; ++i) {
