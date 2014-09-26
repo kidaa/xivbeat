@@ -31,7 +31,9 @@ var regenTimers = function() {
   var h = date.getUTCHours(), m = date.getUTCMinutes();
   var meridiem = "AM";
   if(h > 11 && !shmrd) {
-    h -= 12;
+    if(!days) {
+      h -= 12;
+    }
     meridiem = "PM";
   }
 
@@ -39,7 +41,11 @@ var regenTimers = function() {
     h += (date.getUTCDate() - 1) * 24
   }
 
-  var str = ("0" + h).substr(-2) + ":" + ("0" + m).substr(-2) + ":" + ("0" + date.getUTCSeconds()).substr(-2);
+  var H = ("0" + h).substr(-2);
+  if(h > 99) {
+    H = h;
+  }
+  var str = H + ":" + ("0" + m).substr(-2) + ":" + ("0" + date.getUTCSeconds()).substr(-2);
 
   if(!shmrd) {
     str += " " + meridiem;
