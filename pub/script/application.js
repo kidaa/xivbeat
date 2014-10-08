@@ -102,7 +102,10 @@ var maintenance_do = function() {
 
   var now = Date.now();
   var timeUntil = maintenance_cache.start - now,
-      timeLeft = maintenance_cache.end - now;
+      timeLeft = maintenance_cache.end - now,
+      length = new Date(maintenance_cache.end - maintenance_cache.start);
+
+  length = (length.getUTCHours() * length.getUTCDate());
   if(timeUntil > 0) {
     var date = new Date(timeUntil);
     document.getElementById("ongoing-maintenance").style.display = "none";
@@ -113,6 +116,7 @@ var maintenance_do = function() {
     } else {
       document.getElementById("timeleft").textContent = padZero(date.getUTCHours()) + ":" + padZero(date.getUTCMinutes()) + ":" + padZero(date.getUTCSeconds());
     }
+    document.getElementById("timeleft").textContent += " and will last " + length + " hour" + (length != 1 ? "s" : "");
   } else if(timeLeft > 0) {
     var date = new Date(timeLeft);
     document.getElementById("planned-maintenance").style.display = "none";
