@@ -47,4 +47,8 @@ if(params.main === true) {
   require("./route/index.js")(app, db, express.Router());
 }
 
+process.on('uncaughtException', function(err) {
+  console.log("ERR! "+err);
+});
+
 app.listen(process.env.OPENSHIFT_NODEJS_PORT || process.env.PORT || process.env.VMC_PORT || 8080, process.env.OPENSHIFT_NODEJS_IP || "0.0.0.0", function() { console.log("started"); });
