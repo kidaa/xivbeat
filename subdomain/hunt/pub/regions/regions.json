@@ -1,0 +1,258 @@
+[
+  {
+    "id": 30,
+    "region": {
+      "en": "Middle La Noscea",
+      "de": "Zentrales La Noscea",
+      "fr": "Noscea centrale",
+      "jp": "中央ラノシア"
+    },
+    "zone": {
+      "en": "La Noscea",
+      "de": "La Noscea",
+      "fr": "Noscea",
+      "jp": "ラノシア"
+    },
+    "map": "2851004fdeff959100360127ac0b97a3a2c1db8089620571557d2263a9dd890f"
+  },
+  {
+    "id": 31,
+    "region": {
+      "en": "Lower La Noscea",
+      "de": "Unteres La Noscea",
+      "fr": "Basse-Noscea",
+      "jp": "低地ラノシア"
+    },
+    "zone": {
+      "en": "La Noscea",
+      "de": "La Noscea",
+      "fr": "Noscea",
+      "jp": "ラノシア"
+    },
+    "map": "e9c5c2614c4b77abd509d07aaaad8bc555526d4fceff86021eced0c5fac51f10"
+  },
+  {
+    "id": 32,
+    "region": {
+      "en": "Eastern La Noscea",
+      "de": "Östliches La Noscea",
+      "fr": "Noscea orientale",
+      "jp": "東ラノシア"
+    },
+    "zone": {
+      "en": "La Noscea",
+      "de": "La Noscea",
+      "fr": "Noscea",
+      "jp": "ラノシア"
+    },
+    "map": "4409c984f2c417b722ecf4d2869bd38860b9c2ef202303a86e1c09b78391378d"
+  },
+  {
+    "id": 33,
+    "region": {
+      "en": "Western La Noscea",
+      "de": "Westliches La Noscea",
+      "fr": "Noscea occidentale",
+      "jp": "西ラノシア"
+    },
+    "zone": {
+      "en": "La Noscea",
+      "de": "La Noscea",
+      "fr": "Noscea",
+      "jp": "ラノシア"
+    },
+    "map": "1975aae5fe7773db3c6024ae79d1c269e8767e920cabe4519856523d9e5a6f81"
+  },
+  {
+    "id": 34,
+    "region": {
+      "en": "Upper La Noscea",
+      "de": "Oberes La Noscea",
+      "fr": "Haute-Noscea",
+      "jp": "高地ラノシア"
+    },
+    "zone": {
+      "en": "La Noscea",
+      "de": "La Noscea",
+      "fr": "Noscea",
+      "jp": "ラノシア"
+    },
+    "map": "d135cac52250199c2d7a1d73c288a52d7fa4e70ab4f3a12fe184f2c8b794ab2d"
+  },
+  {
+    "id": 42,
+    "region": {
+      "en": "Western Thanalan",
+      "de": "Westliches Thanalan",
+      "fr": "Thanalan occidental",
+      "jp": "西ザナラーン"
+    },
+    "zone": {
+      "en": "Thanalan",
+      "de": "Thanalan",
+      "fr": "Thanalan",
+      "jp": "ザナラーン"
+    },
+    "map": "e3669d5469a839e7b3f4a87ddf687b69ab4e4cc3f255b5a24a04dd2a4a8af9f3"
+  },
+  {
+    "id": 43,
+    "region": {
+      "en": "Central Thanalan",
+      "de": "Zentrales Thanalan",
+      "fr": "Thanalan central",
+      "jp": "中央ザナラーン"
+    },
+    "zone": {
+      "en": "Thanalan",
+      "de": "Thanalan",
+      "fr": "Thanalan",
+      "jp": "ザナラーン"
+    },
+    "map": "e9c874a351c5f026f6610dfcffe24c32cbc7e7e98580e5506ceb2af2ac07fa47"
+  },
+  {
+    "id": 44,
+    "region": {
+      "en": "Eastern Thanalan",
+      "de": "Östliches Thanalan",
+      "fr": "Thanalan oriental",
+      "jp": "東ザナラーン"
+    },
+    "zone": {
+      "en": "Thanalan",
+      "de": "Thanalan",
+      "fr": "Thanalan",
+      "jp": "ザナラーン"
+    },
+    "map": "4d7ce96d93d8b0180bde9b58d509527d738d1a606c356b3043d2844dd62fa78f"
+  },
+  {
+    "id": 45,
+    "region": {
+      "en": "Southern Thanalan",
+      "de": "Südliches Thanalan",
+      "fr": "Thanalan méridional",
+      "jp": "南ザナラーン"
+    },
+    "zone": {
+      "en": "Thanalan",
+      "de": "Thanalan",
+      "fr": "Thanalan",
+      "jp": "ザナラーン"
+    },
+    "map": "224cf7b5df19976aeb50985c4867def23fe3641e810dd43a5ff4c9dc34d4ee86"
+  },
+  {
+    "id": 46,
+    "region": {
+      "en": "Northern Thanalan",
+      "de": "Nördliches Thanalan",
+      "fr": "Thanalan septentrional",
+      "jp": "北ザナラーン"
+    },
+    "zone": {
+      "en": "Thanalan",
+      "de": "Thanalan",
+      "fr": "Thanalan",
+      "jp": "ザナラーン"
+    },
+    "map": "21ef1967e9dd57aada4f678ffe9aa1d6ba82d97966a6aee4824dbe6803f7b7e3"
+  },
+  {
+    "id": 54,
+    "region": {
+      "en": "Central Shroud",
+      "de": "Tiefer Wald",
+      "fr": "Forêt centrale",
+      "jp": "黒衣森：中央森林"
+    },
+    "zone": {
+      "en": "The Black Shroud",
+      "de": "Finsterwald",
+      "fr": "Forêt de Sombrelinceul",
+      "jp": "黒衣森"
+    },
+    "map": "6ad3303a1e3321652960ffa9a79ed8b81cb4fd7baca17c1c3ffcdbeae6c8aa83"
+  },
+  {
+    "id": 55,
+    "region": {
+      "en": "East Shroud",
+      "de": "Ostwald",
+      "fr": "Forêt de l'est",
+      "jp": "黒衣森：東部森林"
+    },
+    "zone": {
+      "en": "The Black Shroud",
+      "de": "Finsterwald",
+      "fr": "Forêt de Sombrelinceul",
+      "jp": "黒衣森"
+    },
+    "map": "5c0cf919b448e2411ac7af6c0dfd93ffec1e2f0b84889a134e10030748d69f84"
+  },
+  {
+    "id": 56,
+    "region": {
+      "en": "South Shroud",
+      "de": "Südwald",
+      "fr": "Forêt du sud",
+      "jp": "黒衣森：南部森林"
+    },
+    "zone": {
+      "en": "The Black Shroud",
+      "de": "Finsterwald",
+      "fr": "Forêt de Sombrelinceul",
+      "jp": "黒衣森"
+    },
+    "map": "c3ec67b9a486ffcbadea03e0022131d34d5cbaf96b3962590f046972a5e562f7"
+  },
+  {
+    "id": 57,
+    "region": {
+      "en": "North Shroud",
+      "de": "Nordwald",
+      "fr": "Forêt du nord",
+      "jp": "黒衣森：北部森林"
+    },
+    "zone": {
+      "en": "The Black Shroud",
+      "de": "Finsterwald",
+      "fr": "Forêt de Sombrelinceul",
+      "jp": "黒衣森"
+    },
+    "map": "e660bedfdb7b3338443a32bfd7ccf9cdc0f9d066c5ee7302d04e54c4afda2a1c"
+  },
+  {
+    "id": 63,
+    "region": {
+      "en": "Coerthas Central Highlands",
+      "de": "Zentrales Hochland von Coerthas",
+      "fr": "Hautes terres du Coerthas central",
+      "jp": "クルザス中央高地"
+    },
+    "zone": {
+      "en": "Coerthas",
+      "de": "Coerthas",
+      "fr": "Coerthas",
+      "jp": "クルザス"
+    },
+    "map": "b4d4f119b97b9cc6e53ca87cc06c91b0ed7fc14583deda5390845c2074cdaf87"
+  },
+  {
+    "id": 67,
+    "region": {
+      "en": "Mor Dhona",
+      "de": "Mor Dhona",
+      "fr": "Mor Dhona",
+      "jp": "モードゥナ"
+    },
+    "zone": {
+      "en": "Mor Dhona",
+      "de": "Mor Dhona",
+      "fr": "Mor Dhona",
+      "jp": "モードゥナ"
+    },
+    "map": "6d5360f6b48f25c5dccc756938c0cb82ef607d72a7feb0031a4e0fab1fe7b49e"
+  }
+]
