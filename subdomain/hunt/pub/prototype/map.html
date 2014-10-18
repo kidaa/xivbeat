@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>prototype</title>
+    <script src="http://maps.googleapis.com/maps/api/js?sensor=false&libraries=visualization&v=3.17"></script>
+    <style>
+html, body, .map {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#coords {
+  position: absolute;
+  text-align: center;
+  bottom: 2px;
+  left: 0;
+  right: 0;
+}
+    </style>
+  </head>
+  <body>
+    <div id="coords">
+
+    </div>
+    <div class="map">
+
+    </div>
+    <script src="/script/map.js"></script>
+    <script src="/script/configuration.js"></script>
+    <script src="/regions/regions.js"></script>
+    <script>
+var map = new hunt(".map", parseInt(location.search.substr(1)) || 67, "en");
+
+// google.maps.event.addListener(map.map, "click", function(event) {
+//   var data = map.heatmap.getData();
+//   data.push(event.latLng);
+//   map.heatmap.setData(data);
+// });
+    </script>
+  </body>
+</html>

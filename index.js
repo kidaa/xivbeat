@@ -11,7 +11,7 @@ app.set("view engine", "html");
 app.set("views", "./view");
 var db = null;
 
-var params = {api: true, time: true, pf: true, main: true, rtma: true};
+var params = {api: true, time: true, pf: false, main: true, rtma: true, hunt: false};
 
 if(process.argv.length > 2) {
   for(var key in params) {
@@ -32,19 +32,28 @@ if(process.argv.length > 2) {
 }
 
 if(params.api === true) {
+  console.log("API Loaded");
   require("./subdomain/api/")(app, db, subdomain, express.Router());
 }
 if(params.time === true) {
+  console.log("Time Loaded");
   require("./subdomain/time/")(app, db, subdomain, express.Router());
 }
 if(params.pf === true) {
+  console.log("PF Loaded");
   require("./subdomain/pf/")(app, db, subdomain, express.Router());
 }
 if(params.rtma === true) {
+  console.log("Atma Loaded");
   require("./subdomain/atma/")(app, db, subdomain, express.Router());
 }
 if(params.main === true) {
+  console.log("WWW Loaded");
   require("./route/index.js")(app, db, express.Router());
+}
+if(params.hunt === true) {
+  console.log("Hunt Loaded");
+  require("./subdomain/hunt/")(app, db, subdomain, express.Router());
 }
 
 process.on('uncaughtException', function(err) {
