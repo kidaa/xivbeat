@@ -61,7 +61,7 @@ var hunt = function(query, id, language) {
   });
 
   this.map = m;
-  this.heatmap = new google.maps.visualization.HeatmapLayer({data: [], dissipating: false, radius: 5});
+  this.heatmap = new google.maps.visualization.HeatmapLayer({data: [], dissipating: false, radius: 2});
   this.heatmap.setMap(m);
 }
 
