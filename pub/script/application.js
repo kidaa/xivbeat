@@ -103,9 +103,7 @@ var maintenance_do = function() {
   var now = Date.now();
   var timeUntil = maintenance_cache.start - now,
       timeLeft = maintenance_cache.end - now,
-      length = new Date(maintenance_cache.end - maintenance_cache.start);
-
-  length = (length.getUTCHours() * length.getUTCDate());
+      length = (maintenance_cache.end - maintenance_cache.start) / 3600000;
   if(timeUntil > 0) {
     var date = new Date(timeUntil);
     document.getElementById("ongoing-maintenance").style.display = "none";
