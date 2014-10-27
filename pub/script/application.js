@@ -103,7 +103,8 @@ var maintenance_do = function() {
   var now = Date.now();
   var timeUntil = maintenance_cache.start - now,
       timeLeft = maintenance_cache.end - now,
-      length = (maintenance_cache.end - maintenance_cache.start) / 3600000;
+      length = (maintenance_cache.end - maintenance_cache.start) / 3600000,
+      duration = (maintenance_cache.end - now) / 3600000;
   if(timeUntil > 0) {
     var date = new Date(timeUntil);
     document.getElementById("ongoing-maintenance").style.display = "none";
@@ -120,7 +121,7 @@ var maintenance_do = function() {
     document.getElementById("planned-maintenance").style.display = "none";
     document.getElementsByTagName("section")[0].style.display =
     document.getElementById("ongoing-maintenance").style.display = "block";
-    document.getElementById("ongoing-timeleft").textContent = padZero(date.getUTCHours()) + ":" + padZero(date.getUTCMinutes()) + ":" + padZero(date.getUTCSeconds());
+    document.getElementById("ongoing-timeleft").textContent = padZero(Math.floor(duration)) + ":" + padZero(date.getUTCMinutes()) + ":" + padZero(date.getUTCSeconds());
   } else {
     document.getElementsByTagName("section")[0].style.display =
     document.getElementById("ongoing-maintenance").style.display =
