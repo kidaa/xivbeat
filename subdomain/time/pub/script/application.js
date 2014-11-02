@@ -385,8 +385,10 @@ var getSearchResults = function(query) {
     event.target.className = "active";
   }
   left.parentNode.children[0].addEventListener("mouseenter", ifnc, false);
-  search.addEventListener("mouseenter", ifnc, false);
-  search.addEventListener("keyup", createSearch, false);
+  search.addEventListener("keyup", function(event) {
+    ifnc({target: left.parentNode.children[0]});
+    createSearch();
+  }, false);
   tick();
 }, sortByTime = function(hours) {
   var _ = logicdata.concat([]);
