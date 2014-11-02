@@ -4,7 +4,8 @@ var EZ_TIME_CONSTANT = 20.571428571428574,
     data = undefined,
     eorzea_time = document.getElementById("eorzea_time").children[1],
     real_time = document.getElementById("real_time"),
-    left = document.getElementById("left"),
+    left = document.getElementById("left").children[1],
+    search = document.getElementById("left").children[0].children[0],
     right = document.getElementById("right"),
     settingsRows = document.getElementById("rows"),
     settings = document.getElementById("settings"),
@@ -19,7 +20,23 @@ var EZ_TIME_CONSTANT = 20.571428571428574,
     sup = document.getElementById("eorzea_time").children[0],
     moonel = document.getElementById("eorzea_time").children[2];
 
-var regenTimers = function() {
+var getSearchResults = function(query) {
+  var query = query.toLowerCase();
+  var resultset = [];
+  if(query.length == 0) {
+    return resultset;
+  }
+  for(var time in window.nodes) {
+    var _ = window.nodes[time];
+    for(var i = 0; i < _.length; ++i) {
+      var n = _[i];
+      if(n.item.toLowerCase().indexOf(query) > -1) {
+        resultset.push([parseInt(time), i]);
+      }
+    }
+  }
+  return resultset;
+}, regenTimers = function() {
   currents = Date.now();
   daily = (Math.floor((currents - 54000000) / 86400000) + 1) * 86400000 + 54000000;
   weekly = (Math.floor((currents - 460800000) / 604800000) + 1) * 604800000 + 460800000;
@@ -64,6 +81,84 @@ var regenTimers = function() {
     }
   }
   return timeDifference;
+}, createSearch = function() {
+  var s_ul = document.createElement("ul");
+  s_ul.id = "searchresult";
+  if(document.getElementById("searchresult") !== null) {
+    var el = document.getElementById("searchresult");
+    s_ul.className = el.className;
+    el.parentNode.removeChild(el);
+  }
+
+  var now = getEorzeaTime(),
+      date = new Date(now),
+      hour = date.getUTCHours();
+
+  var results = getSearchResults(search.value);
+  for(var i = 0; i < results.length; ++i) {
+    var _ = results[i];
+    var n = logicdata[_[0]].nodes[_[1]];
+    var timeDifference = calculateHours(last_hour, _[0]);
+    var timeLeft = document.createElement("span");
+    timeLeft.dataset.fh = timeDifference;
+    var minuteDifference = 60 - date.getUTCMinutes();
+    timeDifference -= (1 - (minuteDifference / 60));
+    timeLeft.textContent = Math.floor(remaining(timeDifference));
+    if(timeLeft.textContent == "0") {
+      timeLeft.textContent = "< 1";
+    }
+    timeLeft.textContent = timeLeft.textContent + " MINS";
+    if(n.hour == last_hour) {
+      timeLeft.textContent = "NOW";
+    }
+
+    timeLeft.dataset.class = i;
+    timeLeft.textContent = n.class + " / " + timeLeft.textContent;
+    timeLeft.className = "class srch";
+
+    var item = document.createElement("span");
+    item.textContent = n.item;
+    item.className = "item";
+
+    var slot = document.createElement("span");
+    slot.textContent = "Slot #"+n.slot;
+    slot.className = "slot";
+
+    var loc = document.createElement("span");
+    loc.className = "location";
+    if("location" in n) {
+      loc.textContent = n.location + " (" + n.coordinates[0] + ", " + n.coordinates[1] + ")";
+    }
+
+    var li = document.createElement("li");
+    li.appendChild(timeLeft);
+    li.appendChild(item);
+    li.appendChild(slot);
+    li.appendChild(loc);
+    s_ul.appendChild(li);
+  }
+  right.appendChild(s_ul);
+}, updateSearch = function() {
+  var query = document.querySelectorAll("srch");
+  for(var i = 0; i < query.length; ++i) {
+    var _ = results[i];
+    var n = logicdata[_[0]].nodes[_[1]];
+    var timeDifference = calculateHours(last_hour, _[0]);
+    var timeLeft = document.createElement("span");
+    var minuteDifference = 60 - date.getUTCMinutes();
+    timeDifference -= (1 - (minuteDifference / 60));
+    str = Math.floor(remaining(timeDifference));
+    if(timeLeft.textContent == "0") {
+      str = "< 1";
+    }
+    if(n.hour == last_hour) {
+      str = "NOW";
+    }
+
+    timeLeft.dataset.class = i;
+    str = n.class + " / " + str;
+    srch.innerText = str;
+  }
 }, playSound = function(se) {
   var se = "/se/"+se+".mp3";
   var a = new Audio();
@@ -163,11 +258,11 @@ var regenTimers = function() {
       li.addEventListener("mouseenter", function(event) {
         document.querySelector(".show").className = ""
         document.getElementById("nodes"+event.target.dataset.fh).className = "show";
-        document.querySelector("li.active").className = "";
+        document.querySelector(".active").className = "";
         event.target.className = "active";
       }, false);
-
     }
+    createSearch();
     left.appendChild(ul);
     left.children[0].children[0].className = "active";
 
@@ -283,6 +378,15 @@ var regenTimers = function() {
     settings.style.display = blacken.style.display = "block";
   }, false);
 
+  var ifnc = function(event) {
+    document.querySelector(".show").className = ""
+    document.querySelector(".active").className = "";
+    document.getElementById("searchresult").className = "show";
+    event.target.className = "active";
+  }
+  left.parentNode.children[0].addEventListener("mouseenter", ifnc, false);
+  search.addEventListener("mouseenter", ifnc, false);
+  search.addEventListener("keyup", createSearch, false);
   tick();
 }, sortByTime = function(hours) {
   var _ = logicdata.concat([]);

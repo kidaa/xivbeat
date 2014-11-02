@@ -195,6 +195,16 @@
         24,
         16
       ]
+    },
+    {
+      "class": "miner",
+      "item": "Platinum Ore",
+      "slot": 6,
+      "location": "Southern Thanalan",
+      "coordinates": [
+        19,
+        f8
+      ]
     }
   ],
   "5": [

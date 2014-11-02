@@ -1,3 +1,4 @@
+
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,600);
 
 /* http://www.fontsaddict.com/font/eurostar-regular-extended.html - first "eurostar regular extended webfont" google result, message if copyright infrigement */
@@ -316,4 +317,16 @@ article {
 
 .phase.day:hover img:nth-child(1) {
   display: none;
+}
+
+#search {
+  background: transparent;
+  border: none;
+  color: #eee;
+  font-size: 17px;
+  width: 100%;
+}
+
+#search:hover {
+  background: #222;
 }
