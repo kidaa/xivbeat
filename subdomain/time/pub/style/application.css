@@ -327,6 +327,10 @@ article {
   width: 100%;
 }
 
-#search:hover {
+#left div:first-child:hover, #left div:first-child.active {
   background: #222;
+}
+
+#left div:first-child {
+  padding: 0 5px;
 }

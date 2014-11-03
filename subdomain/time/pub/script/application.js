@@ -108,7 +108,7 @@ var getSearchResults = function(query) {
       timeLeft.textContent = "< 1";
     }
     timeLeft.textContent = timeLeft.textContent + " MINS";
-    if(n.hour == last_hour) {
+    if(_[0] == last_hour) {
       timeLeft.textContent = "NOW";
     }
 
