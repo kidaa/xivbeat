@@ -86,6 +86,40 @@ var LODESTONE_10 = function(db, router) {
     }, mash(func, expires));
   }
 
+  router.get({
+    endpoint: "character/avatar/:id",
+    expires: 1000 * 60 * 60 * 24,
+    params: []
+  }, function(req, res, next) {
+    var id = req.params.id;
+    var cache_str = "CHARACTER_AVATAR#"+id+"#";
+    var ch = cache.get(cache_str);
+    if(ch === null) {
+      lodestone.getCharacter.basic(id, function(err, result) {
+        if(err) {
+          return res.end(err);
+        };
+
+        var ds = {
+          avatar: {
+            x50: result.picture,
+            x64: result.picture.replace("50x50", "64x64"),
+            x96: result.picture.replace("50x50", "96x96")
+          },
+          profile: {
+            x240: result.pictureLarge.replace("264x360", "176x240"),
+            x360: result.pictureLarge,
+            x873: result.pictureLarge.replace("264x360", "640x873")
+          }
+        };
+        cache.set(cache_str, ds, 1000 * 60 * 60 * 24);
+        res.end(ds, 1000 * 60 * 60 * 24)
+      });
+    } else {
+      res.end(ch || {}, cache.getRemaining(cache_str));
+    }
+  });
+
   return router;
 }
 
