@@ -120,15 +120,15 @@ article {
   content: " MINS";
 }
 
-#left li span.active:after {
-  content: " MINS REMAINING";
-}
-
 #left li span.single:after {
   content: " MIN";
 }
 
-#left li span.single.active:after {
+#left li:first-child span:after {
+  content: " MINS REMAINING";
+}
+
+#left li:first-child span.single:after {
   content: " MIN REMAINING";
 }
 
