@@ -5,7 +5,12 @@ var GET = function(url, callback) {
   xhr.onreadystatechange = function() {
     if(xhr.readyState == 4) {
       if(xhr.status !== 200) {
-        alert("An unexpected error occurred, sorry.")
+        for(var i = 0; i < metadata.order.length; ++i) {
+          for(var world in map[metadata.order[i]]) {
+            document.getElementById(world).className = classes[0] + " " + (showIP ? "ip" : "name");
+          }
+        }
+        return setTimeout(check, 1000 * 15 * 1);
       }
       callback(xhr.status, xhr.response);
     }
