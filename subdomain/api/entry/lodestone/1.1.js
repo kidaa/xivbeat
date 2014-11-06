@@ -3,6 +3,7 @@
 
 //middleware because subdomain switch.
 var lodestone = require("../../../../lib/lodestone.js"),
+    xivdb = require("../../../../lib/xivdb.js"),
     path = require("path"),
     static = require("serve-static");
 
@@ -117,6 +118,39 @@ var LODESTONE_10 = function(db, router) {
       });
     } else {
       res.end(ch || {}, cache.getRemaining(cache_str));
+    }
+  });
+
+  router.get({
+    endpoint: "xivdb/:eorzea_db_id",
+    expires: Number.MAX_VALUE/2
+  }, function(req, res) {
+    var cache_str = "XIVDB#"+req.eorzea_db_id;
+    var ch = cache.get(cache_str);
+    if(ch === null) {
+      lodestone.lookupDBItem(req.params.eorzea_db_id, function(err, result) {
+        if(err) {
+          res.end(err.stack);
+        } else {
+          xivdb.search(result, function(err, url) {
+            if(err) {
+              url = "NOT FOUND";
+            }
+            cache.set(cache_str, {url: url}, Number.MAX_VALUE/2);
+            if(req.params._type == "txt") {
+              res.end(url, Number.MAX_VALUE/2);
+            } else {
+              res.end({url: url}, Number.MAX_VALUE/2);
+            }
+          });
+        }
+      });
+    } else {
+      if(req.params._type == "txt") {
+        res.end(ch.url, Number.MAX_VALUE/2);
+      } else {
+        res.end(ch, Number.MAX_VALUE/2);
+      }
     }
   });
 

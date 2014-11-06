@@ -4,6 +4,9 @@
 //middleware because subdomain switch.
 var aetheryte = require("../../../../lib/aetheryte.js");
 
+var lodestone = require("../../../../lib/lodestone.js"),
+    xivdb = require("../../../../lib/xivdb.js");
+
 var AETHERYTE_10 = function(db, router) {
 
   router.get({
