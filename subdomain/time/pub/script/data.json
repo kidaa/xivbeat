@@ -545,28 +545,6 @@
       ]
     }
   ],
-  "10": [
-    {
-      "class": "fisher",
-      "item": "Mahi-Mahi",
-      "location": "Lower La Noscea",
-      "coordinates": [
-        24,
-        39
-      ]
-    }
-  ],
-  "11": [
-    {
-      "class": "fisher",
-      "item": "Mahi-Mahi",
-      "location": "Lower La Noscea",
-      "coordinates": [
-        24,
-        39
-      ]
-    }
-  ],
   "12": [
     {
       "class": "fisher",
@@ -678,15 +656,6 @@
   "16": [
     {
       "class": "fisher",
-      "item": "Mahi-Mahi",
-      "location": "Lower La Noscea",
-      "coordinates": [
-        24,
-        39
-      ]
-    },
-    {
-      "class": "fisher",
       "item": "Weather Change"
     }
   ],
@@ -779,15 +748,6 @@
       "coordinates": [
         8,
         13
-      ]
-    },
-    {
-      "class": "fisher",
-      "item": "Mahi-Mahi",
-      "location": "Lower La Noscea",
-      "coordinates": [
-        24,
-        39
       ]
     }
   ],
