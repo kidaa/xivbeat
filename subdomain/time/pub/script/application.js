@@ -113,7 +113,11 @@ var getSearchResults = function(query) {
     }
 
     timeLeft.dataset.class = i;
-    timeLeft.textContent = n.class + " / " + timeLeft.textContent + " / " + (_[0] % 13)+" "+(_[0] > 12 ? "PM" : "AM");
+    var h = _[0];
+    if(h > 12) {
+      h -= 12;
+    }
+    timeLeft.textContent = n.class + " / " + timeLeft.textContent + " / " + (h)+" "+(_[0] > 12 ? "PM" : "AM");
     timeLeft.className = "class srch";
 
     var item = document.createElement("span");
