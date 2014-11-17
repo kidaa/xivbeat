@@ -900,5 +900,11 @@
         23
       ]
     }
+  ],
+  "23": [
+    {
+      "class": "fisher",
+      "item": "Weather Change"
+    }
   ]
 }
