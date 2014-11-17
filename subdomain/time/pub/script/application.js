@@ -47,7 +47,7 @@ var getSearchResults = function(query) {
   var date = new Date(epoch);
   var h = date.getUTCHours(), m = date.getUTCMinutes();
   var meridiem = "AM";
-  if(h > 11 && !shmrd) {
+  if(h > 12 && !shmrd) {
     if(!days) {
       h -= 12;
     }
@@ -113,7 +113,7 @@ var getSearchResults = function(query) {
     }
 
     timeLeft.dataset.class = i;
-    timeLeft.textContent = n.class + " / " + timeLeft.textContent;
+    timeLeft.textContent = n.class + " / " + timeLeft.textContent + " / " + (_[0] % 13)+" "+(_[0] > 12 ? "PM" : "AM");
     timeLeft.className = "class srch";
 
     var item = document.createElement("span");
@@ -121,8 +121,10 @@ var getSearchResults = function(query) {
     item.className = "item";
 
     var slot = document.createElement("span");
-    slot.textContent = "Slot #"+n.slot;
     slot.className = "slot";
+    if("slot" in n) {
+      slot.textContent = "Slot #"+n.slot;
+    }
 
     var loc = document.createElement("span");
     loc.className = "location";
@@ -196,7 +198,7 @@ var getSearchResults = function(query) {
       var li = document.createElement("li");
       var hour = n.hour,
           meridiem = "AM";
-      if(hour > 11) {
+      if(hour > 12) {
         hour -= 12;
         meridiem = "PM";
       }
@@ -333,7 +335,7 @@ var getSearchResults = function(query) {
     var rowTime = document.createElement("span");
 
     var rt = number, meridiem = "AM";
-    if(rt > 11) {
+    if(rt > 12) {
       rt -= 12;
       meridiem = "PM";
     }
