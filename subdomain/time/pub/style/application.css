@@ -124,11 +124,11 @@ article {
   content: " MIN";
 }
 
-#left li:first-child span:after {
+#left li.now span:after {
   content: " MINS REMAINING";
 }
 
-#left li:first-child span.single:after {
+#left li.now span.single:after {
   content: " MIN REMAINING";
 }
 

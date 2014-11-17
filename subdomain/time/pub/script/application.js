@@ -194,7 +194,7 @@ var getSearchResults = function(query) {
     }
 
     var ul = document.createElement("ul");
-    for(var i = 0; i < 24; ++i) {
+    for(var i = 0; i <= 24; ++i) {
       var n = data[i];
       if(n === undefined) {
         continue;
@@ -220,7 +220,8 @@ var getSearchResults = function(query) {
       }
       timeLeft.className = "countdown";
       if(n.hour == last_hour) {
-        timeLeft.className += " active";
+        li.classList.add("active");
+        li.classList.add("now");
       }
       li.dataset.fh = n.hour;
       li.appendChild(timeLeft);
@@ -264,13 +265,13 @@ var getSearchResults = function(query) {
       li.addEventListener("mouseenter", function(event) {
         document.querySelector(".show").className = ""
         document.getElementById("nodes"+event.target.dataset.fh).className = "show";
-        document.querySelector(".active").className = "";
-        event.target.className = "active";
+        document.querySelector(".active").classList.remove("active");
+        event.target.classList.add("active");
       }, false);
     }
     createSearch();
     left.appendChild(ul);
-    left.children[0].children[0].className = "active";
+    left.children[0].children[0].classList.add("active");
 
     var ace = Aetheryte.getEorzeaTimeAce(),
         element = Aetheryte.getElement(ace),
@@ -386,9 +387,9 @@ var getSearchResults = function(query) {
 
   var ifnc = function(event) {
     document.querySelector(".show").className = ""
-    document.querySelector(".active").className = "";
     document.getElementById("searchresult").className = "show";
-    event.target.className = "active";
+    document.querySelector(".active").classList.remove("active");
+    event.target.classList.add("active");
   }
   left.parentNode.children[0].addEventListener("mouseenter", ifnc, false);
   search.addEventListener("keyup", function(event) {
