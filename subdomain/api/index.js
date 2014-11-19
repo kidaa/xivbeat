@@ -16,6 +16,13 @@ var API = function(app, db, subdomain, root) {
       Frontier = Api.getInterface("frontier"),
       Lodestone = Api.getInterface("lodestone");
 
+  root.use(static(path.resolve(__dirname, "pub")));
+  Api.static({
+    endpoint: "README.txt",
+    name: "README",
+    expires: -1
+  })
+
   require("./entry/aetheryte/")(db, Aetheryte);
   Api.interface(Aetheryte);
 

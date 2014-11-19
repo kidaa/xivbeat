@@ -12,7 +12,8 @@ var LODESTONE_10 = function(db, router) {
 
   router.get({
     endpoint: "character/:id",
-    expires: 1000 * 60 * 60 * 24
+    expires: 1000 * 60 * 60 * 24,
+    params: {"no_icons": "boolean"}
   }, function(req, res, next) {
     var id = req.params.id;
     var ch = cache.get("CHARACTER#"+id+("no_icons" in req.query ? "NO_ICONS" : "ICONS"));

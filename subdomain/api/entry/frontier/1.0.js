@@ -67,7 +67,7 @@ var FRONTIER_10 = function(db, router) {
   router.get({
     endpoint: "headlines",
     expires: 3600000,
-    params: ["lang"]
+    params: {"lang": "string"}
   }, function(req, res) {
     var ch = cache.get("headlines.json#" + (req.query.lang || "en-us"));
     if(ch !== null) {
@@ -140,7 +140,7 @@ var FRONTIER_10 = function(db, router) {
   router.get({
     endpoint: "article",
     expires: 3600000,
-    params: ["id"]
+    params: {"id": "number"}
   }, function(req, res) {
     if(req.query.id === undefined || req.query.id.length == 0) {
       return res.end({error: "Invalid ID"});
