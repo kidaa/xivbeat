@@ -1,4 +1,4 @@
-var GET = function(url, callback) {
+  var GET = function(url, callback) {
   var xhr = new XMLHttpRequest();
   xhr.open("GET", url, true);
   xhr.responseType = "json";
@@ -71,6 +71,7 @@ var maintenance_do = function() {
     if(maintenance_cache.services.length > 0) {
       var additional = document.createElement("div");
       additional.id = "additional";
+
       for(var i = 0; i < maintenance_cache.services.length; ++i) {
         var span = document.createElement("div");
         span.textContent = maintenance_cache.services[i];
@@ -91,7 +92,9 @@ var maintenance_do = function() {
       }, false);
       list.appendChild(toggle);
     }
-
+    if(maintenance_cache.start - 900000 - Date.now() <= 0 && document.getElementById("maintenance").style.backgroundColor != "#C24545") {
+      document.getElementById("maintenance").style.backgroundColor = "#C24545";
+    }
     if(maintenance_cache.id.length) {
       document.getElementById("planned-maintenance").children[0].children[0].href =
       document.getElementById("ongoing-maintenance").children[0].children[0].href = "http://eu.finalfantasyxiv.com/lodestone/news/detail/" + maintenance_cache.id;
