@@ -89,6 +89,16 @@
         32,
         11
       ]
+    },
+    {
+      "class": "miner",
+      "item": "Pumice",
+      "slot": 1,
+      "location": "Eastern La Noscea",
+      "coordinates": [
+        17,
+        26
+      ]
     }
   ],
   "2": [
@@ -545,6 +555,18 @@
       ]
     }
   ],
+  "10": [
+    {
+      "class": "botanist",
+      "item": "Cypress Log",
+      "slot": 6,
+      "location": "Eastern La Noscea",
+      "coordinates": [
+        17,
+        26
+      ]
+    }
+  ],
   "12": [
     {
       "class": "fisher",
@@ -748,6 +770,26 @@
       "coordinates": [
         8,
         13
+      ]
+    },
+    {
+      "class": "botanist",
+      "item": "Rosemary",
+      "slot": 1,
+      "location": "East Shroud",
+      "coordinates": [
+        22,
+        30
+      ]
+    },
+    {
+      "class": "miner",
+      "item": "Virgin Basilisk Egg",
+      "slot": 6,
+      "location": "Northern Thanalan",
+      "coordinates": [
+        24,
+        26
       ]
     }
   ],
