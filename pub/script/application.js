@@ -57,7 +57,7 @@ var padZero = function(number) {
 var maintenance_cache = {};
 var maintenance_do = function() {
   if(maintenance_cache === null) {
-    return setTimeout(maintenance, 1000 * 60 * 30);
+    return maintenance();
   }
 
   var list = document.querySelector("#affected #list");
